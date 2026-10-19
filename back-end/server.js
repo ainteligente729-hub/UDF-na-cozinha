@@ -13,11 +13,7 @@ app.use(bodyParser.json({ limit: '1mb' }));
 // Imagens locais (quando STORAGE_DRIVER=local)
 app.use('/uploads', express.static(storage.UPLOAD_DIR, { maxAge: '30d', immutable: true }));
 
-// ---- Partes da colega (1, 4 e 5): descomente quando as rotas dela estiverem no projeto
-// app.use(require('./routes/auth'));         // login/cadastro/JWT
-// app.use(require('./routes/comunidade'));   // comentários, avaliações, favoritos
-
-// ---- Partes 2, 3, 6 e 7
+// --Partes 2, 3, 6 e 7
 app.use(require('./routes/receitas'));   // busca, porções, CRUD
 app.use(require('./routes/midia'));      // upload/otimização de imagens
 app.use(require('./routes/seo'));        // JSON-LD, página da receita, sitemap, robots
