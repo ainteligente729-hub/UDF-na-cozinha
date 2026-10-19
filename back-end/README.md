@@ -1,7 +1,7 @@
 # UDF na Cozinha: Backend (partes 2, 3, 6 e 7)
 
 Stack: Node.js + Express 5 + MySQL (mysql2), a mesma do projeto. Todas as rotas foram testadas
-de ponta a ponta (`npm test`) contra o banco da colega + a migração abaixo.
+de ponta a ponta (`npm test`) contra o bd da helena  + a migração abaixo.
 
 | Parte | Arquivo | O que faz |
 |---|---|---|
