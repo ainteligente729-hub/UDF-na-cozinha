@@ -16,10 +16,6 @@ const pool = mysql.createPool({
 });
 const db = pool.promise();
 
-db.query('SELECT 1').then(() => console.log('MySQL conectado'));
-
-
-
 app.listen(3000, () => {
   console.log('Servidor rodando em http://localhost:3000');
 });
