@@ -12,7 +12,7 @@ de ponta a ponta (`npm test`) contra o banco da colega + a migração abaixo.
 
 ## Como rodar
 
-1. Banco (nesta ordem). **Use `--default-character-set=utf8mb4`**: o script da colega tem a coluna `descrição` (com acento):
+1. Banco (nesta ordem). **Use `--default-character-set=utf8mb4`**:
    ```bash
    mysql -u root -p --default-character-set=utf8mb4 < sql/01_BD_BLOGCOMIDA_colega.sql
    mysql -u root -p --default-character-set=utf8mb4 < sql/02_migracao_parte2.sql
@@ -22,14 +22,14 @@ de ponta a ponta (`npm test`) contra o banco da colega + a migração abaixo.
 3. `npm install` e depois `npm run dev`.
 4. `npm test` roda o teste de ponta a ponta (apaga os dados das tabelas; use banco de desenvolvimento).
 
-## O que a migração (`02`) muda no banco da colega
+## O que a migração (`02`) 
 
 - **AUTO_INCREMENT** nos ids. No script original eles são `int` simples; sem isso nenhum INSERT funciona.
 - `receitas`: colunas `slug`, `imagem_capa`, `video_url`, `dt_atualizacao`.
 - `receita_ingredientes`: coluna `ordem`. `ingredientes.nome` e `tags.nome` passam a ser únicos.
 - Tabelas novas: `receita_imagens` e `afiliados`.
 
-## Integração com a parte da colega
+## Integração com a partes da Helena 
 
 - **Auth (parte 4):** `middlewares/auth.js` é uma versão mínima (valida JWT e RBAC). O token precisa ter
   `{ id_usuario, perfil }` no payload (`id` também é aceito). Se ela já tem um middleware, é só trocar o `require`
@@ -88,7 +88,5 @@ de ponta a ponta (`npm test`) contra o banco da colega + a migração abaixo.
 ## Observações
 
 - Os testes rodaram em **MariaDB 10.11**; a sintaxe usada é compatível com MySQL 8.
-- A coluna da colega se chama `descrição` (com acento). O código a trata e devolve `descricao` no JSON.
-  Se ela puder renomear para `descricao`, evita problemas de encoding no futuro.
 - O `slug` não muda ao editar o título (para não quebrar links e SEO).
 - `calorias` é guardada como um valor da receita e **não** escala com as porções.
