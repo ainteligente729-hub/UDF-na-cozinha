@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Cadastrar Receita - UDF na Cozinha</title>
+
+    <link rel="stylesheet" href="estilos.css">
+
+</head>
+
+<body>
+    <header>
+
+    <img src="imagem/Logo UDF-Na-Cozinha.png" alt="Logo UDF na Cozinha">
+
+    <nav>
+
+        <a href="index.html">Início</a>
+
+        <a href="#">Categorias</a>
+
+        <a href="cadastro-receita.html">Publicar receita</a>
+
+        <a href="#">Perfil</a>
+
+    </nav>
+
+    </header>
+
+    <main class="formulario-receita">
+
+        <h1>Publicar uma receita</h1>
+
+        <p> Compartilhe uma receita com a comunidade UDF na Cozinha.</p>
+
+    <form>
+
+        <label for="titulo">Nome da receita:</label>
+        <input type="text"id="titulo" name="titulo" placeholder="Digite o nome da receita" required >
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" placeholder="Conte um pouco sobre essa receita" required> </textarea>
+
+        <label for="tempo-preparo">Tempo de preparo:</label>
+        <input type="number" id="tempo-preparo" name="tempo-preparo" placeholder="Ex.: 20" min="0" required>
+
+        <label for="tempo-cozimento">Tempo de cozimento:</label>
+        <input  type="number" id="tempo-cozimento" name="tempo-cozimento" placeholder="Ex.: 30" min="0" required>
+
+        <label for="rendimento">Rendimento:</label>
+        <input type="number" id="rendimento" name="rendimento" placeholder="Ex.: 4" min="1" required>
+
+        <label for="calorias">Calorias:</label>
+        <input type="number" id="calorias" name="calorias" placeholder="Ex.: 350" min="0">
+
+        <label for="dificuldade">Dificuldade:</label>
+        <select id="dificuldade" name="dificuldade" required>
+
+            <option value="">Selecione a dificuldade</option>
+
+            <option value="facil">Fácil</option>
+
+            <option value="medio">Médio</option>
+
+            <option value="dificil">Difícil</option>
+
+        </select>
+
+        <label for="categoria">Categoria:</label>
+
+        <select id="categoria" name="categoria" required>
+
+            <option value="">Selecione uma categoria</option>
+
+            <option value="1">Massas</option>
+
+            <option value="2">Carnes</option>
+
+            <option value="3">Sobremesas</option>
+
+            <option value="4">Bolos</option>
+
+            <option value="5">Bebidas</option>
+
+        </select>
+
+        <button type="submit" class="botao-principal">Publicar receita</button>
+    </form>
+ </main>
+    <footer>
+
+        <p>
+            © 2026 UDF na Cozinha - Sabor & Gastronomia
+        </p>
+
+    </footer>
+</body>
+
+</html>
