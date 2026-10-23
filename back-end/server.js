@@ -21,6 +21,9 @@ app.use(require('./routes/compras'));    // lista de compras
 app.use(require('./routes/afiliados'));  // links de afiliados
 app.use(require('./routes/pdf'));        // PDF da receita
 
+app.use(require('./routes/auth'));         // cadastro e login  (Helena)
+app.use(require('./routes/comunidade'));   // comentários, notas, favoritos, admin   (Helena)
+
 app.get('/api/saude', (req, res) => res.json({ ok: true }));
 app.use((req, res, next) => next(new HttpError(404, 'Rota não encontrada.')));
 app.use(erro);
