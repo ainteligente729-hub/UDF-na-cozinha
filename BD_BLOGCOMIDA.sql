@@ -1,94 +1,97 @@
+DROP DATABASE blog_comida;
 CREATE DATABASE blog_comida;
 USE blog_comida;
 
-CREATE TABLE receitas
+CREATE TABLE usuarios
 (
-	id_receita		int,
-	id_usuario		int not null,
-    id_categoria	int not null,
-	titulo			varchar(60)	 not null,
-    descrição		text,
-    tp_prep			int,
-    tp_cozi			int,
-	rendimento		int,
-    calorias		int,
-    dificuldade		enum('facil','medio','dificil') not null,
-    dt_publicacao		datetime
-);
-
-CREATE TABLE ingredientes
-(
-	nome					varchar(100) not null,
-	id_ingredientes			int
-);
-
-CREATE TABLE modo_preparo
-(
-	id_passo		int,
-    id_receita		int not null,
-	ordem			int	 not null,
-    desc_passo		text
+    id_usuario      int             not null,
+    nome            varchar(100)    not null,
+    email           varchar(150)    not null unique,
+    senha           varchar(255)    not null,
+    perfil          enum('admin','autor','leitor') not null default 'leitor',
+    dt_cadastro     datetime        not null default current_timestamp
 );
 
 CREATE TABLE categorias
 (
-	id_categoria	int,
-    nome			varchar(80)		not null,
-    descricao		varchar(55)
+    id_categoria    int             not null,
+    nome            varchar(80)     not null unique,
+    descricao       varchar(255)
 );
 
-CREATE TABLE usuarios
+CREATE TABLE receitas
 (
-	id_usuario		int,
-    nome			varchar(100)	not null,
-    email			varchar(150)	not null,
-    senha			varchar(100)	not null,
-    perfil			enum('admin','autor','leitor') not null default ('leitor'),
-    dt_cadastro		datetime		not null
+    id_receita      int             not null,
+    id_usuario      int             not null,
+    id_categoria    int             not null,
+    titulo          varchar(150)    not null,
+    descricao       text,
+    tp_prep         int,
+    tp_cozi         int,
+    rendimento      int,
+    calorias        int,
+    dificuldade     enum('facil','medio','dificil') not null,
+    dt_publicacao   datetime        not null default current_timestamp
+);
+
+CREATE TABLE ingredientes
+(
+    id_ingredientes int             not null,
+    nome            varchar(100)    not null unique
+);
+
+CREATE TABLE modo_preparo
+(
+    id_passo        int             not null,
+    id_receita      int             not null,
+    ordem           int             not null,
+    desc_passo      text            not null,
+    unique (id_receita, ordem)
 );
 
 CREATE TABLE receita_ingredientes
 (
-	id_receita			int		not null,
-    id_ingredientes		int		not null,
-    quantidade			decimal(8,2) not null,
-    un_medida			varchar(30)	not null
+    id_receita      int             not null,
+    id_ingredientes int             not null,
+    quantidade      decimal(8,2)    not null,
+    un_medida       varchar(30)     not null
 );
 
 CREATE TABLE tags
 (
-	id_tags		int,
-    nome		varchar(50)	not null
+    id_tags         int             not null,
+    nome            varchar(50)     not null unique
 );
 
 CREATE TABLE receita_tags
 (
-	id_tags		int		not null,
-    id_receita		int	not null
+    id_tags         int             not null,
+    id_receita      int             not null
 );
 
 CREATE TABLE comentarios
 (
-	id_comentario		int,
-    id_receita			int,
-    id_usuario			int,
-    texto				text,
-    dt_comentario		datetime
+    id_comentario   int             not null,
+    id_receita      int             not null,
+    id_usuario      int             not null,
+    texto           text            not null,
+    dt_comentario   datetime        not null default current_timestamp
 );
 
 CREATE TABLE avaliacoes
 (
-    id_receita			int,
-    id_usuario			int,
-	nota				int not null,
-	dt_avaliacao		datetime
+    id_receita      int             not null,
+    id_usuario      int             not null,
+    nota            tinyint         not null,
+    dt_avaliacao    datetime        not null default current_timestamp,
+    check (nota between 1 and 5)
 );
 
 CREATE TABLE favoritos
 (
-    id_receita			int,
-    id_usuario			int,
-    dt_fav				datetime
+    id_receita      int             not null,
+    id_usuario      int             not null,
+    dt_fav          datetime        not null default current_timestamp
 );
 
 ALTER TABLE usuarios ADD CONSTRAINT PK_USER
@@ -123,6 +126,17 @@ PRIMARY KEY (id_receita, id_usuario);
 
 ALTER TABLE favoritos ADD CONSTRAINT PK_FAVS
 PRIMARY KEY (id_receita, id_usuario);
+
+-- autoincrement
+ALTER TABLE usuarios     MODIFY id_usuario      int not null AUTO_INCREMENT;
+ALTER TABLE categorias   MODIFY id_categoria    int not null AUTO_INCREMENT;
+ALTER TABLE receitas     MODIFY id_receita      int not null AUTO_INCREMENT;
+ALTER TABLE ingredientes MODIFY id_ingredientes int not null AUTO_INCREMENT;
+ALTER TABLE modo_preparo MODIFY id_passo        int not null AUTO_INCREMENT;
+ALTER TABLE tags         MODIFY id_tags         int not null AUTO_INCREMENT;
+ALTER TABLE comentarios  MODIFY id_comentario   int not null AUTO_INCREMENT;
+
+-- foreign key
 
 ALTER TABLE receitas ADD CONSTRAINT FK_receitas_usuario
 FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario);
@@ -168,3 +182,31 @@ FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario);
 ALTER TABLE favoritos ADD CONSTRAINT FK_FAV_receita
 FOREIGN KEY (id_receita) REFERENCES receitas(id_receita)
 ON DELETE CASCADE;
+
+-- inserção de dados
+USE blog_comida;
+
+INSERT INTO usuarios (nome, email, senha)
+VALUES ('Mariazinha', 'minimaria@email.com', 'Maria123');
+
+INSERT INTO usuarios (nome, email, senha)
+VALUES ('Josefina', 'finafina@email.com', 'Fima123');
+
+INSERT INTO usuarios (nome, email, senha)
+VALUES ('Joao Naldo', 'joaon@email.com', 'Joao123');
+
+INSERT INTO categorias (nome, descricao)
+VALUES ('Sobremesa', 'Doces e mini lanches para pós refeição');
+
+INSERT INTO categorias (nome, descricao)
+VALUES ('Salgados', 'Lanches salgados para fim da tarde');
+
+INSERT INTO categorias (nome, descricao)
+VALUES ('Bolos', 'Assados para lanche');
+
+SELECT * FROM usuarios;
+
+
+SELECT r.*, c.nome AS categoria
+FROM receitas r
+JOIN categorias c ON c.id_categoria = r.id_categoria;
