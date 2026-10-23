@@ -1,35 +1,39 @@
 {
-  "name": "udf-na-cozinha",
-  "version": "1.1.0",
-  "description": "Blog sobre gastronomia nos alunos da UDF",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js",
-    "test": "node tests/smoke.js"
-  },
+  "name": "@img/sharp-win32-x64",
+  "version": "0.33.5",
+  "description": "Prebuilt sharp for use with Windows x64",
+  "author": "Lovell Fuller <npm@lovell.info>",
+  "homepage": "https://sharp.pixelplumbing.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ainteligente729-hub/UDF-na-cozinha.git"
+    "url": "git+https://github.com/lovell/sharp.git",
+    "directory": "npm/win32-x64"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0 AND LGPL-3.0-or-later",
+  "funding": {
+    "url": "https://opencollective.com/libvips"
+  },
+  "preferUnplugged": true,
+  "files": [
+    "lib",
+    "versions.json"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/ainteligente729-hub/UDF-na-cozinha/issues"
+  "exports": {
+    "./sharp.node": "./lib/sharp-win32-x64.node",
+    "./package": "./package.json",
+    "./versions": "./versions.json"
   },
-  "homepage": "https://github.com/ainteligente729-hub/UDF-na-cozinha#readme",
-  "dependencies": {
-    "body-parser": "^2.3.0",
-    "cloudinary": "^2.5.1",
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "express": "^5.3.0",
-    "jsonwebtoken": "^9.0.2",
-    "multer": "^2.0.0",
-    "mysql2": "^3.24.6",
-    "pdfkit": "^0.15.0",
-    "sharp": "^0.33.5"
-  }
+  "engines": {
+    "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
+  },
+  "os": [
+    "win32"
+  ],
+  "cpu": [
+    "x64"
+  ]
 }
