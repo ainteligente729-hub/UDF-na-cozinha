@@ -1,4 +1,6 @@
-
+// ATENÇÃO: versão mínima para o backend funcionar de ponta a ponta.
+// A parte 4 (autenticação/JWT) é da sua colega. Se ela já tem um middleware,
+// basta trocar o require nas rotas, desde que ele preencha req.usuario = { id_usuario, perfil }.
 const jwt = require('jsonwebtoken');
 const { HttpError } = require('../utils/erros');
 
