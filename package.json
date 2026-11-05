@@ -1,0 +1,26 @@
+{
+  "name": "udf-na-cozinha",
+  "version": "1.0.0",
+  "description": "Blog sobre gastronomia nos alunos da UDF",
+  "main": "JavaScript.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ainteligente729-hub/UDF-na-cozinha.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ainteligente729-hub/UDF-na-cozinha/issues"
+  },
+  "homepage": "https://github.com/ainteligente729-hub/UDF-na-cozinha#readme",
+  "dependencies": {
+    "body-parser": "^2.3.0",
+    "express": "^5.3.0",
+    "mysql2": "^3.24.6"
+  }
+}

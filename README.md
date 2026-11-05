@@ -1,2 +1,3 @@
-# UDF na cozinha
-Blog sobre gastronomia nos alunos da UDF
+# UDF na Cozinha
+
+projeto feito em .....
