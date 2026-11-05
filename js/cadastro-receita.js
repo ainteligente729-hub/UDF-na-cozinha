@@ -35,3 +35,40 @@ botaoIngrediente.addEventListener("click", function() {
     document.getElementById("unidade-ingrediente").value = "";
 
 });
+
+const botaoPasso = document.getElementById("adicionar-passo");
+
+const listaPassos = document.getElementById("lista-passos");
+
+let numeroPasso = 1;
+
+
+botaoPasso.addEventListener("click", function() {
+
+    const descricao =
+        document.getElementById("descricao-passo").value;
+
+
+    if (descricao === "") {
+
+        alert("Digite a descrição do passo.");
+
+        return;
+    }
+
+
+    const passo = document.createElement("p");
+
+    passo.textContent =
+        "Passo " + numeroPasso + ": " + descricao;
+
+
+    listaPassos.appendChild(passo);
+
+
+    numeroPasso++;
+
+
+    document.getElementById("descricao-passo").value = "";
+
+});
