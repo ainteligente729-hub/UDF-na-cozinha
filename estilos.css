@@ -337,12 +337,30 @@ footer {
     margin-top: 20px;
 }
 
-#lista-ingredientes p {
+.item-ingrediente {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
     background-color: #F8F6F0;
     padding: 12px;
     margin: 8px 0;
     border-radius: 8px;
 }
+
+.item-ingrediente button {
+    background-color: #142A40;
+    color: white;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.item-ingrediente button:hover {
+    background-color: #B77D0F;
+}
+
 
 .passo-form {
     display: flex;
@@ -369,12 +387,29 @@ footer {
     margin-top: 20px;
 }
 
-#lista-passos p {
+.item-passo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
     background-color: #F8F6F0;
     padding: 15px;
     margin: 10px 0;
     border-left: 4px solid #D99A18;
     border-radius: 6px;
+}
+
+.item-passo button {
+    background-color: #142A40;
+    color: white;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.item-passo button:hover {
+    background-color: #B77D0F;
 }
 
 .formulario-receita .botao-principal {
