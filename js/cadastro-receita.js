@@ -19,14 +19,36 @@ botaoIngrediente.addEventListener("click", function() {
     }
 
 
-    const ingrediente = document.createElement("p");
+    const ingrediente = document.createElement("div");
 
-    ingrediente.textContent =
+    ingrediente.classList.add("item-ingrediente");
+
+
+    const texto = document.createElement("span");
+
+    texto.textContent =
         nome + " - " + quantidade + " " + unidade;
 
 
-    listaIngredientes.appendChild(ingrediente);
+    const botaoRemover = document.createElement("button");
 
+    botaoRemover.type = "button";
+
+    botaoRemover.textContent = "Remover";
+
+
+    botaoRemover.addEventListener("click", function() {
+
+        ingrediente.remove();
+
+    });
+
+
+    ingrediente.appendChild(texto);
+
+    ingrediente.appendChild(botaoRemover);
+
+    listaIngredientes.appendChild(ingrediente);
 
     document.getElementById("nome-ingrediente").value = "";
 
