@@ -79,13 +79,36 @@ botaoPasso.addEventListener("click", function() {
     }
 
 
-    const passo = document.createElement("p");
+    const passo = document.createElement("div");
 
-    passo.textContent =
+    passo.classList.add("item-passo");
+
+
+    const textoPasso = document.createElement("span");
+
+    textoPasso.textContent =
         "Passo " + numeroPasso + ": " + descricao;
 
 
-    listaPassos.appendChild(passo);
+    const botaoRemover = document.createElement("button");
+
+    botaoRemover.type = "button";
+
+    botaoRemover.textContent = "Remover";
+
+
+    botaoRemover.addEventListener("click", function() {
+
+        passo.remove();
+
+});
+
+
+passo.appendChild(textoPasso);
+
+passo.appendChild(botaoRemover);
+
+listaPassos.appendChild(passo);
 
 
     numeroPasso++;
