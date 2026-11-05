@@ -239,3 +239,146 @@ footer {
     display: block;
     margin-bottom: 20px;
 }
+
+.formulario-receita {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.formulario-receita h1 {
+    text-align: center;
+    color: #142A40;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.formulario-receita > p {
+    text-align: center;
+    color: #555;
+    margin-bottom: 35px;
+}
+
+.formulario-receita label {
+    display: block;
+    color: #142A40;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.formulario-receita input,
+.formulario-receita textarea,
+.formulario-receita select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #CCCCCC;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+}
+
+.formulario-receita textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.formulario-receita input:focus,
+.formulario-receita textarea:focus,
+.formulario-receita select:focus {
+    outline: none;
+    border: 2px solid #D99A18;
+}
+
+.ingredientes,
+.preparo {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid #DDDDDD;
+}
+
+.ingredientes h2,
+.preparo h2 {
+    color: #142A40;
+    margin-bottom: 20px;
+}
+
+.ingrediente-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.ingrediente-form input {
+    margin-bottom: 0;
+    flex: 1;
+}
+
+#adicionar-ingrediente {
+    padding: 12px 20px;
+    background-color: #142A40;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#adicionar-ingrediente:hover {
+    background-color: #1E3D5A;
+}
+
+#lista-ingredientes {
+    margin-top: 20px;
+}
+
+#lista-ingredientes p {
+    background-color: #F8F6F0;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+}
+
+.passo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#adicionar-passo {
+    width: fit-content;
+    padding: 12px 20px;
+    background-color: #142A40;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#adicionar-passo:hover {
+    background-color: #1E3D5A;
+}
+
+#lista-passos {
+    margin-top: 20px;
+}
+
+#lista-passos p {
+    background-color: #F8F6F0;
+    padding: 15px;
+    margin: 10px 0;
+    border-left: 4px solid #D99A18;
+    border-radius: 6px;
+}
+
+.formulario-receita .botao-principal {
+    width: 100%;
+    margin-top: 35px;
+    padding: 14px;
+}
