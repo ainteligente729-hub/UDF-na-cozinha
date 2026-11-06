@@ -219,7 +219,7 @@ const formulario =
     document.getElementById("formulario-receita");
 
 
-formulario.addEventListener("submit", function(event) {
+formulario.addEventListener("submit", async function(event) {
 
     // Impede o comportamento padrão do formulário
     // e evita que a página seja recarregada
@@ -298,8 +298,72 @@ formulario.addEventListener("submit", function(event) {
     // MOSTRAR A RECEITA NO CONSOLE
     // ==========================================
 
-    console.log("Receita pronta para ser enviada:");
+   console.log("Receita pronta para ser enviada:");
 
     console.log(receita);
+
+
+    const token = localStorage.getItem("token");
+
+
+    if (!token) {
+
+        alert("Você precisa estar logado para publicar uma receita.");
+
+        return;
+    }
+
+
+    try {
+
+        const resposta = await fetch(
+            "http://localhost:3000/api/receitas",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + token
+                },
+
+                body: JSON.stringify(receita)
+            }
+        );
+
+
+        const dados = await resposta.json();
+
+
+        if (!resposta.ok) {
+
+            console.error("Erro retornado pelo servidor:", dados);
+
+            alert(
+                dados.mensagem ||
+                dados.message ||
+                "Não foi possível publicar a receita."
+            );
+
+            return;
+        }
+
+
+        console.log("Receita cadastrada com sucesso!");
+
+        console.log(dados);
+
+
+        alert("Receita publicada com sucesso!");
+
+    }
+    catch (erro) {
+
+        console.error("Erro ao conectar com o servidor:", erro);
+
+        alert(
+            "Não foi possível conectar ao servidor."
+        );
+
+}
 
 });
