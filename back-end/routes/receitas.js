@@ -296,7 +296,7 @@ router.post('/api/receitas', autenticar, autorizar('autor', 'admin'), async (req
     const slug = await slugUnico(conn, campos.titulo);
     const [r] = await conn.query(
       `INSERT INTO receitas
-         (id_usuario, id_categoria, titulo, slug, \`descrição\`, tp_prep, tp_cozi, rendimento, calorias,
+         (id_usuario, id_categoria, titulo, slug, \`descricao\`, tp_prep, tp_cozi, rendimento, calorias,
           dificuldade, video_url, dt_publicacao, dt_atualizacao)
        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())`,
       [req.usuario.id_usuario, campos.id_categoria, campos.titulo, slug, campos.descricao ?? null,
