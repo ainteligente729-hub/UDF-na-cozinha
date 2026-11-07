@@ -1,318 +1,291 @@
-// ==========================================
-// INGREDIENTES
-// ==========================================
+// ======================================================
+// CADASTRO DE RECEITA
+// ======================================================
 
-const botaoIngrediente =
-    document.getElementById("adicionar-ingrediente");
-
-const listaIngredientes =
-    document.getElementById("lista-ingredientes");
-
+// Arrays que vão guardar os ingredientes e os passos
 const ingredientes = [];
+const passos = [];
 
 
-// Quando clicar no botão "Adicionar" ingrediente
-botaoIngrediente.addEventListener("click", function() {
+// ======================================================
+// INGREDIENTES
+// ======================================================
 
-    const nome =
-        document.getElementById("nome-ingrediente").value;
+const botaoIngrediente = document.getElementById("adicionar-ingrediente");
+const listaIngredientes = document.getElementById("lista-ingredientes");
 
-    const quantidade =
-        document.getElementById("quantidade-ingrediente").value;
+botaoIngrediente.addEventListener("click", function () {
 
-    const unidade =
-        document.getElementById("unidade-ingrediente").value;
+    const nome = document.getElementById("nome-ingrediente").value.trim();
+    const quantidade = document.getElementById("quantidade-ingrediente").value;
+    const unidade = document.getElementById("unidade-ingrediente").value.trim();
 
-
-    // Verifica se os campos foram preenchidos
+    // Verifica se todos os campos foram preenchidos
     if (nome === "" || quantidade === "" || unidade === "") {
-
         alert("Preencha todos os campos do ingrediente.");
-
         return;
     }
 
-
     // Cria o objeto do ingrediente
-    const novoIngrediente = {
-
+    const ingrediente = {
         nome: nome,
-
         quantidade: Number(quantidade),
-
         un_medida: unidade
-
     };
 
+    // Adiciona o ingrediente ao array
+    ingredientes.push(ingrediente);
 
-    // Guarda o ingrediente no array
-    ingredientes.push(novoIngrediente);
+    // Cria o elemento visual
+    const item = document.createElement("div");
+    item.classList.add("item-ingrediente");
 
-
-    // Cria a div que vai aparecer na tela
-    const ingrediente = document.createElement("div");
-
-    ingrediente.classList.add("item-ingrediente");
-
-
-    // Cria o texto que será mostrado
     const texto = document.createElement("span");
 
     texto.textContent =
         nome + " - " + quantidade + " " + unidade;
 
-
-    // Cria o botão Remover
-    const botaoRemover =
-        document.createElement("button");
+    // Botão remover
+    const botaoRemover = document.createElement("button");
 
     botaoRemover.type = "button";
-
     botaoRemover.textContent = "Remover";
 
+    botaoRemover.addEventListener("click", function () {
 
-    // Remove o ingrediente quando clicar
-    botaoRemover.addEventListener("click", function() {
+        // Descobre a posição do ingrediente no array
+        const indice = ingredientes.indexOf(ingrediente);
 
-        const indice =
-            ingredientes.indexOf(novoIngrediente);
-
+        // Remove do array
         if (indice !== -1) {
-
             ingredientes.splice(indice, 1);
-
         }
 
-        ingrediente.remove();
-
+        // Remove da tela
+        item.remove();
     });
 
+    item.appendChild(texto);
+    item.appendChild(botaoRemover);
 
-    // Coloca o texto dentro da div
-    ingrediente.appendChild(texto);
-
-
-    // Coloca o botão dentro da div
-    ingrediente.appendChild(botaoRemover);
-
-
-    // Coloca a div na lista de ingredientes
-    listaIngredientes.appendChild(ingrediente);
-
+    listaIngredientes.appendChild(item);
 
     // Limpa os campos
     document.getElementById("nome-ingrediente").value = "";
-
     document.getElementById("quantidade-ingrediente").value = "";
-
     document.getElementById("unidade-ingrediente").value = "";
-
 });
 
 
-
-// ==========================================
+// ======================================================
 // PASSOS DO MODO DE PREPARO
-// ==========================================
+// ======================================================
 
-const botaoPasso =
-    document.getElementById("adicionar-passo");
+const botaoPasso = document.getElementById("adicionar-passo");
+const listaPassos = document.getElementById("lista-passos");
 
-const listaPassos =
-    document.getElementById("lista-passos");
-
-const passos = [];
-
-let numeroPasso = 1;
-
-
-// Quando clicar no botão "Adicionar passo"
-botaoPasso.addEventListener("click", function() {
+botaoPasso.addEventListener("click", function () {
 
     const descricao =
-        document.getElementById("descricao-passo").value;
+        document.getElementById("descricao-passo").value.trim();
 
-
-    // Verifica se o campo foi preenchido
+    // Verifica se o passo foi preenchido
     if (descricao === "") {
-
         alert("Digite a descrição do passo.");
-
         return;
     }
 
-
-    // Guarda somente a descrição
-    // O número do passo será controlado pelo backend
+    // Adiciona o passo ao array
     passos.push(descricao);
 
+    // Cria o elemento visual
+    const item = document.createElement("div");
+    item.classList.add("item-passo");
 
-    // Cria a div do passo
-    const passo =
-        document.createElement("div");
-
-    passo.classList.add("item-passo");
-
-
-    // Cria o texto que aparece na tela
-    const textoPasso =
-        document.createElement("span");
+    const textoPasso = document.createElement("span");
 
     textoPasso.textContent =
-        "Passo " + numeroPasso + ": " + descricao;
+        "Passo " + passos.length + ": " + descricao;
 
-
-    // Cria o botão Remover
-    const botaoRemover =
-        document.createElement("button");
+    // Botão remover
+    const botaoRemover = document.createElement("button");
 
     botaoRemover.type = "button";
-
     botaoRemover.textContent = "Remover";
 
+    botaoRemover.addEventListener("click", function () {
 
-    // Remove o passo
-    botaoRemover.addEventListener("click", function() {
+        // Descobre o passo dentro do array
+        const indice = passos.indexOf(descricao);
 
-        const indice =
-            passos.indexOf(descricao);
-
+        // Remove do array
         if (indice !== -1) {
-
             passos.splice(indice, 1);
-
         }
 
-        passo.remove();
+        // Remove da tela
+        item.remove();
 
+        // Atualiza a numeração dos passos
+        atualizarNumeracaoPassos();
     });
 
+    item.appendChild(textoPasso);
+    item.appendChild(botaoRemover);
 
-    // Coloca o texto dentro da div
-    passo.appendChild(textoPasso);
-
-
-    // Coloca o botão dentro da div
-    passo.appendChild(botaoRemover);
-
-
-    // Coloca o passo na lista
-    listaPassos.appendChild(passo);
-
-
-    // Aumenta o número do próximo passo
-    numeroPasso++;
-
+    listaPassos.appendChild(item);
 
     // Limpa o campo
     document.getElementById("descricao-passo").value = "";
-
 });
 
 
+// ======================================================
+// ATUALIZAR NUMERAÇÃO DOS PASSOS
+// ======================================================
 
-// ==========================================
+function atualizarNumeracaoPassos() {
+
+    const itens = listaPassos.querySelectorAll(".item-passo");
+
+    itens.forEach(function (item, indice) {
+
+        const texto = item.querySelector("span");
+
+        const descricao = passos[indice];
+
+        texto.textContent =
+            "Passo " + (indice + 1) + ": " + descricao;
+    });
+}
+
+
+// ======================================================
 // ENVIO DO FORMULÁRIO
-// ==========================================
+// ======================================================
 
-const formulario =
-    document.getElementById("formulario-receita");
+const formulario = document.getElementById("formulario-receita");
 
+formulario.addEventListener("submit", async function (event) {
 
-formulario.addEventListener("submit", async function(event) {
-
-    // Impede o comportamento padrão do formulário
-    // e evita que a página seja recarregada
+    // Impede o HTML de recarregar a página
     event.preventDefault();
 
 
-    // ==========================================
-    // PEGANDO OS DADOS DA RECEITA
-    // ==========================================
+    // ==================================================
+    // PEGANDO OS DADOS DO FORMULÁRIO
+    // ==================================================
 
     const titulo =
-        document.getElementById("titulo").value;
+        document.getElementById("titulo").value.trim();
 
     const descricao =
-        document.getElementById("descricao").value;
+        document.getElementById("descricao").value.trim();
 
     const tempoPreparo =
-        Number(
-            document.getElementById("tempo-preparo").value
-        );
+        document.getElementById("tempo-preparo").value;
 
     const tempoCozimento =
-        Number(
-            document.getElementById("tempo-cozimento").value
-        );
+        document.getElementById("tempo-cozimento").value;
 
     const rendimento =
-        Number(
-            document.getElementById("rendimento").value
-        );
+        document.getElementById("rendimento").value;
 
     const calorias =
-        Number(
-            document.getElementById("calorias").value
-        );
+        document.getElementById("calorias").value;
 
     const dificuldade =
         document.getElementById("dificuldade").value;
 
     const categoria =
-        Number(
-            document.getElementById("categoria").value
-        );
+        document.getElementById("categoria").value;
 
 
-    // ==========================================
-    // CRIANDO O OBJETO DA RECEITA
-    // ==========================================
+    // ==================================================
+    // VALIDAÇÕES
+    // ==================================================
+
+    if (titulo === "") {
+        alert("Informe o nome da receita.");
+        return;
+    }
+
+    if (categoria === "") {
+        alert("Selecione uma categoria.");
+        return;
+    }
+
+    if (dificuldade === "") {
+        alert("Selecione a dificuldade.");
+        return;
+    }
+
+    if (ingredientes.length === 0) {
+        alert("Adicione pelo menos um ingrediente.");
+        return;
+    }
+
+    if (passos.length === 0) {
+        alert("Adicione pelo menos um passo no modo de preparo.");
+        return;
+    }
+
+
+    // ==================================================
+    // VERIFICAR TOKEN
+    // ==================================================
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        alert("Você precisa estar logado para publicar uma receita.");
+        window.location.href = "login.html";
+        return;
+    }
+
+
+    // ==================================================
+    // MONTANDO O OBJETO DA RECEITA
+    // ==================================================
 
     const receita = {
-
         titulo: titulo,
 
-        descricao: descricao,
-
-        tp_prep: tempoPreparo,
-
-        tp_cozi: tempoCozimento,
-
-        rendimento: rendimento,
-
-        calorias: calorias,
+        id_categoria: Number(categoria),
 
         dificuldade: dificuldade,
 
-        id_categoria: categoria,
+        descricao: descricao,
+
+        tp_prep:
+            tempoPreparo === ""
+                ? null
+                : Number(tempoPreparo),
+
+        tp_cozi:
+            tempoCozimento === ""
+                ? null
+                : Number(tempoCozimento),
+
+        rendimento:
+            rendimento === ""
+                ? null
+                : Number(rendimento),
+
+        calorias:
+            calorias === ""
+                ? null
+                : Number(calorias),
 
         ingredientes: ingredientes,
 
         passos: passos
-
     };
 
 
-    // ==========================================
-    // MOSTRAR A RECEITA NO CONSOLE
-    // ==========================================
-
-   console.log("Receita pronta para ser enviada:");
-
-    console.log(receita);
-
-
-    const token = localStorage.getItem("token");
-
-
-    if (!token) {
-
-        alert("Você precisa estar logado para publicar uma receita.");
-
-        return;
-    }
-
+    // ==================================================
+    // ENVIANDO PARA O BACKEND
+    // ==================================================
 
     try {
 
@@ -331,39 +304,88 @@ formulario.addEventListener("submit", async function(event) {
         );
 
 
+        // Tenta transformar a resposta em JSON
         const dados = await resposta.json();
 
 
+        // ==================================================
+        // ERRO
+        // ==================================================
+
         if (!resposta.ok) {
 
-            console.error("Erro retornado pelo servidor:", dados);
+            console.error("Resposta do servidor:", dados);
+
+            // Erro de autorização
+            if (resposta.status === 401) {
+                alert(
+                    "Sua sessão expirou ou você não está autenticado."
+                );
+
+                localStorage.removeItem("token");
+
+                window.location.href = "login.html";
+
+                return;
+            }
+
+
+            // Usuário sem permissão
+            if (resposta.status === 403) {
+                alert(
+                    "Você não tem permissão para publicar receitas. " +
+                    "Sua conta precisa ter perfil de autor ou administrador."
+                );
+
+                return;
+            }
+
+
+            // Erro de validação do backend
+            if (resposta.status === 400) {
+
+                let mensagem = dados.erro || "Dados inválidos.";
+
+                if (dados.detalhes && Array.isArray(dados.detalhes)) {
+
+                    mensagem +=
+                        "\n\n" +
+                        dados.detalhes.join("\n");
+                }
+
+                alert(mensagem);
+
+                return;
+            }
+
 
             alert(
-                dados.mensagem ||
-                dados.message ||
-                "Não foi possível publicar a receita."
+                dados.erro ||
+                "Não foi possível cadastrar a receita."
             );
 
             return;
         }
 
 
-        console.log("Receita cadastrada com sucesso!");
+        // ==================================================
+        // SUCESSO
+        // ==================================================
 
-        console.log(dados);
-
+        console.log("Receita cadastrada:", dados);
 
         alert("Receita publicada com sucesso!");
 
-    }
-    catch (erro) {
+        // Volta para a página inicial
+        window.location.href = "index.html";
 
-        console.error("Erro ao conectar com o servidor:", erro);
+
+    } catch (erro) {
+
+        console.error("Erro ao cadastrar receita:", erro);
 
         alert(
             "Não foi possível conectar ao servidor."
         );
-
-}
-
+    }
 });
