@@ -22,12 +22,18 @@ formulario.addEventListener("submit", async function(event) {
 
         return;
     }
+    
+    if (senha.length < 8) {
 
+        alert("A senha precisa ter pelo menos 8 caracteres.");
+
+        return;
+    }
 
     try {
 
         const resposta = await fetch(
-            "http://localhost:3000/api/auth/register",
+            "http://localhost:3000/api/auth/cadastro",
             {
                 method: "POST",
 
