@@ -31,7 +31,7 @@ async function buscar(req, res) {
 
   if (q.q) {
     const like = `%${q.q}%`;
-    where.push(`(r.titulo LIKE ? OR r.\`descrição\` LIKE ? OR EXISTS (
+    where.push(`(r.titulo LIKE ? OR r.\`descricao\` LIKE ? OR EXISTS (
       SELECT 1 FROM receita_ingredientes ri JOIN ingredientes i ON i.id_ingredientes = ri.id_ingredientes
        WHERE ri.id_receita = r.id_receita AND i.nome LIKE ?))`);
     params.push(like, like, like);
@@ -104,7 +104,7 @@ async function buscar(req, res) {
   );
 
   const [itens] = await pool.query(
-    `SELECT r.id_receita, r.titulo, r.slug, r.\`descrição\` AS descricao, r.tp_prep, r.tp_cozi,
+    `SELECT r.id_receita, r.titulo, r.slug, r.\`descricao\` AS descricao, r.tp_prep, r.tp_cozi,
             (COALESCE(r.tp_prep, 0) + COALESCE(r.tp_cozi, 0)) AS tempo_total,
             r.rendimento, r.calorias, r.dificuldade, r.dt_publicacao, r.imagem_capa,
             c.id_categoria, c.nome AS categoria, u.nome AS autor,
@@ -317,7 +317,7 @@ router.put('/api/receitas/:id', autenticar, autorizar('autor', 'admin'), async (
   const { campos, filhos } = validar(req.body || {}, { parcial: true });
 
   const COLUNAS = {
-    titulo: 'titulo', id_categoria: 'id_categoria', descricao: '`descrição`', tp_prep: 'tp_prep', tp_cozi: 'tp_cozi',
+    titulo: 'titulo', id_categoria: 'id_categoria', descricao: '`descricao`', tp_prep: 'tp_prep', tp_cozi: 'tp_cozi',
     rendimento: 'rendimento', calorias: 'calorias', dificuldade: 'dificuldade', video_url: 'video_url',
   };
   const sets = Object.keys(campos).map((k) => `${COLUNAS[k]} = ?`);
