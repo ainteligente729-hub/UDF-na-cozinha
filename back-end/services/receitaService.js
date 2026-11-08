@@ -6,7 +6,7 @@ async function buscarCompleta(ref) {
   const porId = /^\d+$/.test(String(ref));
   const [rows] = await pool.query(
     `SELECT r.id_receita, r.id_usuario, r.id_categoria, r.titulo, r.slug,
-            r.\`descrição\` AS descricao,
+            r.\`descricao\` AS descricao,
             r.tp_prep, r.tp_cozi, r.rendimento, r.calorias, r.dificuldade,
             r.dt_publicacao, r.dt_atualizacao, r.imagem_capa, r.video_url,
             c.nome AS categoria, u.nome AS autor,
