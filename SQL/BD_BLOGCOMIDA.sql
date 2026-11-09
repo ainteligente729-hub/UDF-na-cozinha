@@ -7,7 +7,7 @@ CREATE TABLE usuarios
     nome            varchar(100)    not null,
     email           varchar(150)    not null unique,
     senha           varchar(255)    not null,
-    perfil          enum('admin','autor','leitor') not null default 'leitor',
+    perfil          enum('admin','autor','leitor') not null default 'autor',
     dt_cadastro     datetime        not null default current_timestamp
 );
 
