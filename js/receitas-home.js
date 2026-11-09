@@ -50,7 +50,7 @@ if (receita.imagem_capa) {
             "Dificuldade: " + (receita.dificuldade || "Não informada");
 
         const link = document.createElement("a");
-        link.href = `htmls/receita.html?id=${receita.id_receita}`;
+        link.href = `receita.html?id=${receita.id_receita}`;
         link.textContent = "Ver receita";
 
         card.append(

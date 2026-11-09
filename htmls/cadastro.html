@@ -1,26 +1,60 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+
+<html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+
+    <title>Cadastro - UDF na Cozinha</title>
+
+    <link rel="stylesheet" href="../estilos.css">
+
 </head>
+
 <body>
 
-    <header>
-  <nav>
-    <a href="index.html">Início</a>
+    <main class="login">
 
-    <a href="login.html" data-visivel="visitante">Entrar</a>
-    <a href="cadastro.html" data-visivel="visitante">Criar conta</a>
+        <img src="../imagem/Logo UDF-Na-Cozinha.png" alt="Logo UDF na Cozinha">
 
-    <a href="favoritos.html" data-visivel="logado">Meus favoritos</a>
-    <a href="nova-receita.html" data-visivel="autor admin">Nova receita</a>
-    <a href="admin.html" data-visivel="admin">Painel</a>
+        <h1>Criar conta</h1>
 
-    <button type="button" id="btn-sair" data-visivel="logado">Sair</button>
-  </nav>
-</header>
+        <p>
+            Cadastre-se para começar a compartilhar suas receitas.
+        </p>
 
+
+        <form id="form-cadastro">
+
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+
+            <label for="confirmar-senha">Confirmar senha:</label>
+            <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Digite sua senha novamente" required>
+
+
+            <button type="submit" class="botao-principal">
+                Criar conta
+            </button>
+
+        </form>
+
+
+        <p>
+            Já possui uma conta?
+            <a href="login.html">Fazer login</a>
+        </p>
+
+    </main>
+
+        <script src="../js/cadastro.js"></script>
 </body>
+
 </html>

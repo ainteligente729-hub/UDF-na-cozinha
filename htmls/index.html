@@ -1,26 +1,132 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
 
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>UDF na Cozinha</title>
+
+    <link rel="stylesheet" href="../estilos.css">
+
+</head>
+
+<body>
     <header>
-  <nav>
+
+    <img src="../imagem/Logo UDF-Na-Cozinha.png" alt="Logo UDF na Cozinha">
+
+    <nav>
     <a href="index.html">Início</a>
+    <a href="#">Categorias</a>
+
+    <a href="minhas-receitas.html" data-visivel="logado">Minhas receitas</a>
+    <a href="#" data-visivel="logado">Perfil</a>
 
     <a href="login.html" data-visivel="visitante">Entrar</a>
     <a href="cadastro.html" data-visivel="visitante">Criar conta</a>
 
-    <a href="favoritos.html" data-visivel="logado">Meus favoritos</a>
-    <a href="nova-receita.html" data-visivel="autor admin">Nova receita</a>
-    <a href="admin.html" data-visivel="admin">Painel</a>
+    <button type="button" id="btn-sair"
+            data-visivel="logado">Sair</button>
 
-    <button type="button" id="btn-sair" data-visivel="logado">Sair</button>
-  </nav>
-</header>
+    </header>
 
+    <main>
+
+    <section class="apresentacao">
+
+        <h1>Bem-vindo ao UDF na Cozinha!</h1>
+
+        <p>
+            Compartilhe suas receitas, descubra novos sabores
+            e faça parte da nossa comunidade.
+        </p>
+
+    </section>
+
+    <section class="busca">
+
+    <h2>Encontre uma receita</h2>
+
+    <form id="form-busca">
+        <input
+  type="search"
+  id="campo-busca"
+  placeholder="Digite o nome de uma receita..."
+>
+
+        <button type="submit">
+            Buscar
+        </button>
+
+    </form>
+
+    </section>
+
+    <section class="receitas">
+
+    <h2>Receitas em destaque</h2>
+
+        <div class="lista-receitas" id="lista-receitas">
+
+            <article class="card-receita">
+
+                <img src="../imagem/macarrao.png" alt="Macarrão ao molho de tomate">
+
+                <h3>Macarrão ao molho de tomate</h3>
+
+                <p>Uma receita simples e saborosa para o dia a dia.</p>
+
+                <p>Dificuldade: Fácil</p>
+
+                <a href="#">Ver receita</a>
+
+            </article>
+
+
+            <article class="card-receita">
+
+                 <img src="../imagem/frango.webp"alt="Frango assado">
+
+                <h3>Frango assado</h3>
+
+                <p>Uma opção prática para uma refeição completa.</p>
+
+                <p>Dificuldade: Médio</p>
+
+                <a href="#">Ver receita</a>
+
+            </article>
+
+
+            <article class="card-receita">
+
+                 <img src="../imagem/bolo-chocolate.jpg" alt="Bolo de chocolate">
+
+                <h3>Bolo de chocolate</h3>
+
+                <p>Uma receita clássica para quem gosta de chocolate.</p>
+
+                <p> Dificuldade: Fácil</p>
+
+                <a href="#">Ver receita</a>
+
+            </article>
+
+        </div>
+
+    </section>
+
+    </main>
+
+    <footer>
+
+    <p>© 2026 UDF na Cozinha - Sabor & Gastronomia</p>
+
+    </footer>
+    <script src="../js/receitas-home.js"></script>
+    <script src="../js/menu.js"></script>
 </body>
+
 </html>
