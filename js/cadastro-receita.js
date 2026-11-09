@@ -375,6 +375,14 @@ formulario.addEventListener("submit", async function (event) {
             return;
         }
 
+            if (!respostaImagem.ok) {
+            const erroImagem = await respostaImagem.json();
+            console.error("Erro ao enviar imagem:", erroImagem);
+
+            alert("A receita foi publicada, mas não foi possível salvar a foto.");
+            return;
+        }    
+        
 
         // ==================================================
         // SUCESSO
