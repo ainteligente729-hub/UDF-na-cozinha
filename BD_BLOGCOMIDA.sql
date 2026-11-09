@@ -32,6 +32,10 @@ CREATE TABLE receitas
     calorias        int,
     dificuldade     enum('facil','medio','dificil') not null,
     dt_publicacao   datetime        not null default current_timestamp
+    slug            varchar(180),
+    video_url       varchar(500),
+    dt_atualizacao  datetime,
+    imagem_capa     varchar(500)
 );
 
 CREATE TABLE ingredientes
@@ -55,6 +59,7 @@ CREATE TABLE receita_ingredientes
     id_ingredientes int             not null,
     quantidade      decimal(8,2)    not null,
     un_medida       varchar(30)     not null
+    ordem           int             not null default 0
 );
 
 CREATE TABLE tags
