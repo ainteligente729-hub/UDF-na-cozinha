@@ -4,7 +4,7 @@ USE blog_comida;
 
 CREATE TABLE usuarios
 (
-    id_usuario      int             not null auto_increment,
+    id_usuario      int             not null,
     nome            varchar(100)    not null,
     email           varchar(150)    not null unique,
     senha           varchar(255)    not null,
