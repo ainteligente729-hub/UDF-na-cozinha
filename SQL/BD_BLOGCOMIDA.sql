@@ -95,7 +95,7 @@ CREATE TABLE favoritos
 
 CREATE TABLE receita_imagens 
 (
-    id_imagem         INT(11)          NOT NULL AUTO_INCREMENT,
+    id_imagem         INT(11)          NOT NULL,
     id_receita        INT(11)          NOT NULL,
     url_grande        VARCHAR(500)     NOT NULL,
     url_media         VARCHAR(500)     NOT NULL,
@@ -105,11 +105,11 @@ CREATE TABLE receita_imagens
     largura           INT(11)          DEFAULT NULL,
     altura            INT(11)          DEFAULT NULL,
     principal         TINYINT(1)       NOT NULL DEFAULT 0,
-    dt_upload         DATETIME         NOT NULL,
-  PRIMARY KEY (id_imagem),
-    INDEX FK_IMG_receita (id_receita),
-  FOREIGN KEY (id_receita) REFERENCES receitas(id_receita)
+    dt_upload         DATETIME         NOT NULL
 );
+
+ALTER TABLE receita_imagens ADD CONSTRAINT PK_IMAGEM
+PRIMARY KEY (id_imagem);
 
 ALTER TABLE usuarios ADD CONSTRAINT PK_USER
 PRIMARY KEY (id_usuario);
@@ -145,15 +145,19 @@ ALTER TABLE favoritos ADD CONSTRAINT PK_FAVS
 PRIMARY KEY (id_receita, id_usuario);
 
 -- autoincrement
-ALTER TABLE usuarios     MODIFY id_usuario      int not null AUTO_INCREMENT;
-ALTER TABLE categorias   MODIFY id_categoria    int not null AUTO_INCREMENT;
-ALTER TABLE receitas     MODIFY id_receita      int not null AUTO_INCREMENT;
-ALTER TABLE ingredientes MODIFY id_ingredientes int not null AUTO_INCREMENT;
-ALTER TABLE modo_preparo MODIFY id_passo        int not null AUTO_INCREMENT;
-ALTER TABLE tags         MODIFY id_tags         int not null AUTO_INCREMENT;
-ALTER TABLE comentarios  MODIFY id_comentario   int not null AUTO_INCREMENT;
+ALTER TABLE usuarios         MODIFY id_usuario      int not null AUTO_INCREMENT;
+ALTER TABLE categorias       MODIFY id_categoria    int not null AUTO_INCREMENT;
+ALTER TABLE receitas         MODIFY id_receita      int not null AUTO_INCREMENT;
+ALTER TABLE ingredientes     MODIFY id_ingredientes int not null AUTO_INCREMENT;
+ALTER TABLE modo_preparo     MODIFY id_passo        int not null AUTO_INCREMENT;
+ALTER TABLE tags             MODIFY id_tags         int not null AUTO_INCREMENT;
+ALTER TABLE comentarios      MODIFY id_comentario   int not null AUTO_INCREMENT;
+ALTER TABLE receita_imagens  MODIFY id_imagem       int not null AUTO_INCREMENT;
+
 
 -- foreign key
+ALTER TABLE receita_imagens ADD CONSTRAINT FK_receitas_imagens
+ FOREIGN KEY (id_receita) REFERENCES receitas(id_receita);
 
 ALTER TABLE receitas ADD CONSTRAINT FK_receitas_usuario
 FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario);
