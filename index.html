@@ -48,9 +48,12 @@
 
     <h2>Encontre uma receita</h2>
 
-    <form>
-
-        <input type="search" placeholder="Digite o nome de uma receita...">
+    <form id="form-busca">
+        <input
+  type="search"
+  id="campo-busca"
+  placeholder="Digite o nome de uma receita..."
+>
 
         <button type="submit">
             Buscar
@@ -64,7 +67,7 @@
 
     <h2>Receitas em destaque</h2>
 
-        <div class="lista-receitas">
+        <div class="lista-receitas" id="lista-receitas">
 
             <article class="card-receita">
 
@@ -121,6 +124,7 @@
     <p>© 2026 UDF na Cozinha - Sabor & Gastronomia</p>
 
     </footer>
+    <script src="js/receitas-home.js"></script>
 </body>
 
 </html>
