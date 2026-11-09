@@ -468,3 +468,199 @@ footer {
 .card-favorito a:hover {
     color: #142A40;
 }
+
+/* =========================================================
+PERFIL
+========================================================= */
+
+.perfil {
+max-width: 1100px;
+margin: 40px auto;
+padding: 0 30px 50px;
+box-sizing: border-box;
+}
+
+/* CABEÇALHO DO PERFIL */
+
+.cabecalho-perfil {
+background-color: white;
+padding: 40px;
+border-radius: 15px;
+
+display: flex;
+align-items: center;
+gap: 35px;
+
+box-sizing: border-box;
+
+}
+
+/* FOTO / AVATAR */
+
+.avatar {
+width: 150px;
+height: 150px;
+
+border-radius: 50%;
+
+background-color: #142A40;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+flex-shrink: 0;
+
+}
+
+.avatar span {
+color: #F2C14E;
+font-size: 60px;
+font-weight: bold;
+}
+
+/* INFORMAÇÕES */
+
+.informacoes-perfil {
+flex: 1;
+}
+
+.informacoes-perfil h1 {
+text-align: left;
+margin: 0 0 5px;
+
+color: #142A40;
+font-size: 32px;
+
+}
+
+.nome-usuario {
+color: #D99A18;
+font-weight: bold;
+margin: 0 0 15px;
+}
+
+.biografia {
+color: #555;
+line-height: 1.5;
+max-width: 600px;
+}
+
+/* BOTÃO EDITAR */
+
+.botao-editar {
+margin-top: 10px;
+
+padding: 11px 25px;
+
+background-color: #D99A18;
+color: white;
+
+border: none;
+border-radius: 8px;
+
+font-size: 15px;
+font-weight: bold;
+
+cursor: pointer;
+
+transition: 0.3s;
+
+}
+
+.botao-editar {
+background-color: #B77D0F;
+}
+
+/* ESTATÍSTICAS */
+
+.estatisticas {
+background-color: white;
+
+margin-top: 20px;
+padding: 25px;
+
+border-radius: 12px;
+
+display: flex;
+justify-content: center;
+gap: 80px;
+
+box-sizing: border-box;
+
+}
+
+.estatistica {
+text-align: center;
+}
+
+.estatistica strong {
+display: block;
+
+color: #142A40;
+font-size: 25px;
+
+margin-bottom: 5px;
+
+}
+
+.estatistica span {
+color: #555;
+font-size: 15px;
+}
+
+/* SEÇÕES */
+
+.secao-perfil {
+margin-top: 40px;
+}
+
+.secao-perfil h2 {
+color: #142A40;
+text-align: center;
+
+margin-bottom: 25px;
+
+}
+
+/* LISTA DE RECEITAS */
+
+.secao-perfil .lista-receitas {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 25px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 700px) {
+
+.perfil {
+    padding: 0 20px 40px;
+}
+
+.cabecalho-perfil {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.informacoes-perfil h1 {
+    text-align: center;
+}
+
+.biografia {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.estatisticas {
+    gap: 30px;
+}
+
+.estatistica strong {
+    font-size: 22px;
+}
+
+}
