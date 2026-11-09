@@ -4,12 +4,13 @@ USE blog_comida;
 
 CREATE TABLE usuarios
 (
-    id_usuario      int             not null,
+    id_usuario      int             not null auto_increment,
     nome            varchar(100)    not null,
     email           varchar(150)    not null unique,
     senha           varchar(255)    not null,
     perfil          enum('admin','autor','leitor') not null default 'leitor',
     dt_cadastro     datetime        not null default current_timestamp
+    primary key (id_usuario)
 );
 
 CREATE TABLE categorias
