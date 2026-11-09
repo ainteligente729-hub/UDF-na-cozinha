@@ -46,12 +46,20 @@ botaoIngrediente.addEventListener("click", function () {
         nome + " - " + quantidade + " " + unidade;
 
     // Botão remover
-    const botaoRemover = document.createElement("button");
+ botaoRemover.addEventListener("click", function () {
 
-    botaoRemover.type = "button";
-    botaoRemover.textContent = "Remover";
+    const indice = Array.from(
+        listaPassos.children
+    ).indexOf(item);
 
-    botaoRemover.addEventListener("click", function () {
+    if (indice !== -1) {
+        passos.splice(indice, 1);
+    }
+
+    item.remove();
+
+    atualizarNumeracaoPassos();
+});
 
         // Descobre a posição do ingrediente no array
         const indice = ingredientes.indexOf(ingrediente);
@@ -367,6 +375,14 @@ formulario.addEventListener("submit", async function (event) {
             return;
         }
 
+            if (!respostaImagem.ok) {
+            const erroImagem = await respostaImagem.json();
+            console.error("Erro ao enviar imagem:", erroImagem);
+
+            alert("A receita foi publicada, mas não foi possível salvar a foto.");
+            return;
+        }    
+        
 
         // ==================================================
         // SUCESSO
