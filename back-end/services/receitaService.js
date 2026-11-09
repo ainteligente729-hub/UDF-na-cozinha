@@ -53,13 +53,6 @@ async function buscarCompleta(ref) {
   );
   r.imagens = imagens.map((i) => ({ ...i, principal: !!i.principal }));
 
-  const [afiliados] = await pool.query(
-    `SELECT id_afiliado, id_ingredientes, titulo, loja, imagem_url
-       FROM afiliados WHERE ativo = 1 AND (id_receita = ? OR id_receita IS NULL) ORDER BY id_afiliado`,
-    [r.id_receita]
-  );
-  r.afiliados = afiliados.map((a) => ({ ...a, link: `/go/${a.id_afiliado}` }));
-
   return r;
 }
 
