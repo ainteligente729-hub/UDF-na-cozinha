@@ -1,4 +1,4 @@
-🍳 UDF na Cozinha
+# 🍳 UDF na Cozinha
 
 Projeto acadêmico e prático desenvolvido para compartilhamento, gestão e publicação de receitas culinárias, integrando front-end intuitivo com um back-end robusto e banco de dados relacional.
 
@@ -24,7 +24,7 @@ multer (upload e manipulação de arquivos/imagens)
 
 jsonwebtoken / bcryptjs (autenticação e segurança)
 
-🛠️ Processo de Criação do Blog
+# 🛠️ Processo de Criação do Blog
 
 🗄️ Banco de Dados
 
@@ -54,7 +54,7 @@ ChatGPT: Utilizado no suporte à estruturação inicial das regras de negócio e
 
 Gemini: Utilizado na estruturação, organização, validação técnica e formatação final da documentação completa deste arquivo README.md, incluindo a padronização das orientações de instalação, dependências e execução do projeto Node.js/Express.
 
-📦 Instalação e Configuração
+# 📦 Instalação e Configuração
 
 Pré-requisitos
 
