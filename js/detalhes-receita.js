@@ -152,7 +152,7 @@ async function verificarFavorito() {
     try {
         const resposta = await fetch("http://localhost:3000/api/favoritos", {
             headers: {
-                "Authorization": "Bearer " + token
+                "Authorization": `Bearer ${token}`
             }
         });
 
@@ -162,15 +162,14 @@ async function verificarFavorito() {
 
         const favoritos = await resposta.json();
 
-        const jaFavoritada = favoritos.some(function (receita) {
-            return String(receita.id_receita) === String(idReceita);
-        });
+        // Usa .some() com arrow function para verificar se já existe a receita
+        const jaFavoritada = favoritos.some(receita => String(receita.id_receita) === String(idReceita));
 
-        if (jaFavoritada) {
-            botaoFavoritar.textContent = "♥ Receita favoritada";
-        } else {
-            botaoFavoritar.textContent = "♡ Favoritar receita";
-        }
+        // Atualiza o texto do botão de acordo com o estado único
+        botaoFavoritar.textContent = jaFavoritada ? "♥ Receita favoritada" : "♡ Favoritar receita";
+        
+        // Opcional: Adicionar uma classe para estilizar via CSS se desejar
+        botaoFavoritar.classList.toggle("favoritada", jaFavoritada);
 
     } catch (erro) {
         console.error("Erro ao verificar favorito:", erro);
