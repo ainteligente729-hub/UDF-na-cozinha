@@ -191,6 +191,6 @@ Padronização do passo a passo de instalação das dependências Node.js e exec
 
 Formatação estruturada em Markdown de todas as rotas, regras de integração e histórico de correções da aplicação.
 
-📄 Licença
+# 📄 Licença
 
 Este projeto é de cunho acadêmico e está sob a licença descrita no arquivo LICENSE.
