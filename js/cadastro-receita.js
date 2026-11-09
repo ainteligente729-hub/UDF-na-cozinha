@@ -372,12 +372,51 @@ formulario.addEventListener("submit", async function (event) {
         // SUCESSO
         // ==================================================
 
-        console.log("Receita cadastrada:", dados);
+       console.log("Receita cadastrada:", dados);
 
-        alert("Receita publicada com sucesso!");
+// Pega a foto escolhida no formulário
+const campoImagem = document.getElementById("imagem-receita");
+const arquivoImagem = campoImagem.files[0];
 
-        // Volta para a página inicial
-        window.location.href = "index.html";
+// Se o usuário escolheu uma foto, envia para o backend
+if (arquivoImagem) {
+
+    const formData = new FormData();
+
+    formData.append("imagens", arquivoImagem);
+    formData.append("principal", "true");
+
+    try {
+        const respostaImagem = await fetch(
+            `http://localhost:3000/api/receitas/${dados.id_receita}/imagens`,
+            {
+                method: "POST",
+                headers: {
+                    "Authorization": "Bearer " + token
+                },
+                body: formData
+            }
+        );
+
+        if (!respostaImagem.ok) {
+            const erroImagem = await respostaImagem.json();
+            console.error("Erro ao enviar imagem:", erroImagem);
+
+            alert("A receita foi publicada, mas não foi possível salvar a foto.");
+            return;
+        }
+
+        console.log("Imagem enviada com sucesso!");
+
+    } catch (erroImagem) {
+        console.error("Erro no upload:", erroImagem);
+        alert("A receita foi publicada, mas houve um erro ao enviar a foto.");
+        return;
+    }
+}
+
+alert("Receita publicada com sucesso!");
+window.location.href = "index.html";
 
 
     } catch (erro) {

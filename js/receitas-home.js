@@ -18,9 +18,26 @@ function exibirReceitas(receitas) {
         const card = document.createElement("article");
         card.className = "card-receita";
 
-        const imagem = document.createElement("img");
-        imagem.src = receita.imagem_capa || "imagem/bolo-chocolate.jpg";
-        imagem.alt = receita.titulo || "Receita";
+     const imagem = document.createElement("img");
+
+if (receita.imagem_capa) {
+    imagem.src = receita.imagem_capa;
+    imagem.alt = receita.titulo || "Receita";
+} else {
+    imagem.src = "";
+    imagem.alt = "Imagem não disponível";
+    imagem.style.display = "none";
+}
+const avisoImagem = document.createElement("p");
+
+avisoImagem.textContent = "📷 Imagem não disponível";
+avisoImagem.style.textAlign = "center";
+avisoImagem.style.padding = "50px 10px";
+avisoImagem.style.color = "#777";
+
+if (receita.imagem_capa) {
+    avisoImagem.style.display = "none";
+}
 
         const titulo = document.createElement("h3");
         titulo.textContent = receita.titulo || "Sem título";
@@ -36,7 +53,13 @@ function exibirReceitas(receitas) {
         link.href = `htmls/receita.html?id=${receita.id_receita}`;
         link.textContent = "Ver receita";
 
-        card.append(imagem, titulo, descricao, dificuldade, link);
+        card.append(
+    receita.imagem_capa ? imagem : avisoImagem,
+    titulo,
+    descricao,
+    dificuldade,
+    link
+);
         lista.appendChild(card);
     });
 }
