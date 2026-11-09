@@ -1,359 +1,211 @@
--- ============================================================
--- BANCO DE DADOS: UDF na Cozinha
--- ============================================================
-
-DROP DATABASE IF EXISTS blog_comida;
-
 CREATE DATABASE blog_comida;
-
 USE blog_comida;
-
-
--- ============================================================
--- TABELA: usuarios
--- ============================================================
 
 CREATE TABLE usuarios
 (
-    id_usuario      INT             NOT NULL AUTO_INCREMENT,
-    nome            VARCHAR(100)    NOT NULL,
-    email           VARCHAR(150)    NOT NULL UNIQUE,
-    senha           VARCHAR(255)    NOT NULL,
-    perfil          ENUM('admin','autor','leitor') NOT NULL DEFAULT 'leitor',
-    dt_cadastro     DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    PRIMARY KEY (id_usuario)
+    id_usuario      int             not null,
+    nome            varchar(100)    not null,
+    email           varchar(150)    not null unique,
+    senha           varchar(255)    not null,
+    perfil          enum('admin','autor','leitor') not null default 'leitor',
+    dt_cadastro     datetime        not null default current_timestamp
 );
-
-
--- ============================================================
--- TABELA: categorias
--- ============================================================
 
 CREATE TABLE categorias
 (
-    id_categoria    INT             NOT NULL AUTO_INCREMENT,
-    nome            VARCHAR(80)     NOT NULL UNIQUE,
-    descricao       VARCHAR(255),
-
-    PRIMARY KEY (id_categoria)
+    id_categoria    int             not null,
+    nome            varchar(80)     not null unique,
+    descricao       varchar(255)
 );
-
-
--- ============================================================
--- TABELA: receitas
--- ============================================================
 
 CREATE TABLE receitas
 (
-    id_receita      INT             NOT NULL AUTO_INCREMENT,
-    id_usuario      INT             NOT NULL,
-    id_categoria    INT             NOT NULL,
-    titulo          VARCHAR(150)    NOT NULL,
-    descricao       TEXT,
-    tp_prep         INT,
-    tp_cozi         INT,
-    rendimento      INT,
-    calorias        INT,
-    dificuldade     ENUM('facil','medio','dificil') NOT NULL,
-    dt_publicacao   DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    -- Campos adicionados ao projeto
-    slug            VARCHAR(180),
-    video_url       VARCHAR(500),
-    dt_atualizacao  DATETIME,
-    imagem_capa     VARCHAR(500),
-
-    PRIMARY KEY (id_receita)
+    id_receita      int             not null,
+    id_usuario      int             not null,
+    id_categoria    int             not null,
+    titulo          varchar(150)    not null,
+    descricao       text,
+    tp_prep         int,
+    tp_cozi         int,
+    rendimento      int,
+    calorias        int,
+    dificuldade     enum('facil','medio','dificil') not null,
+    dt_publicacao   datetime        not null default current_timestamp
 );
-
-
--- ============================================================
--- TABELA: ingredientes
--- ============================================================
 
 CREATE TABLE ingredientes
 (
-    id_ingredientes INT             NOT NULL AUTO_INCREMENT,
-    nome            VARCHAR(100)    NOT NULL UNIQUE,
-
-    PRIMARY KEY (id_ingredientes)
+    id_ingredientes int             not null,
+    nome            varchar(100)    not null unique
 );
-
-
--- ============================================================
--- TABELA: modo_preparo
--- ============================================================
 
 CREATE TABLE modo_preparo
 (
-    id_passo        INT             NOT NULL AUTO_INCREMENT,
-    id_receita      INT             NOT NULL,
-    ordem           INT             NOT NULL,
-    desc_passo      TEXT            NOT NULL,
-
-    PRIMARY KEY (id_passo),
-
-    UNIQUE (id_receita, ordem)
+    id_passo        int             not null,
+    id_receita      int             not null,
+    ordem           int             not null,
+    desc_passo      text            not null,
+    unique (id_receita, ordem)
 );
-
-
--- ============================================================
--- TABELA: receita_ingredientes
--- ============================================================
 
 CREATE TABLE receita_ingredientes
 (
-    id_receita      INT             NOT NULL,
-    id_ingredientes INT             NOT NULL,
-    quantidade      DECIMAL(8,2)    NOT NULL,
-    un_medida       VARCHAR(30)     NOT NULL,
-    ordem           INT             NOT NULL DEFAULT 0,
-
-    PRIMARY KEY (id_receita, id_ingredientes)
+    id_receita      int             not null,
+    id_ingredientes int             not null,
+    quantidade      decimal(8,2)    not null,
+    un_medida       varchar(30)     not null
 );
-
-
--- ============================================================
--- TABELA: tags
--- ============================================================
 
 CREATE TABLE tags
 (
-    id_tags         INT             NOT NULL AUTO_INCREMENT,
-    nome            VARCHAR(50)     NOT NULL UNIQUE,
-
-    PRIMARY KEY (id_tags)
+    id_tags         int             not null,
+    nome            varchar(50)     not null unique
 );
-
-
--- ============================================================
--- TABELA: receita_tags
--- ============================================================
 
 CREATE TABLE receita_tags
 (
-    id_tags         INT             NOT NULL,
-    id_receita      INT             NOT NULL,
-
-    PRIMARY KEY (id_tags, id_receita)
+    id_tags         int             not null,
+    id_receita      int             not null
 );
-
-
--- ============================================================
--- TABELA: comentarios
--- ============================================================
 
 CREATE TABLE comentarios
 (
-    id_comentario   INT             NOT NULL AUTO_INCREMENT,
-    id_receita      INT             NOT NULL,
-    id_usuario      INT             NOT NULL,
-    texto           TEXT            NOT NULL,
-    dt_comentario   DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    PRIMARY KEY (id_comentario)
+    id_comentario   int             not null,
+    id_receita      int             not null,
+    id_usuario      int             not null,
+    texto           text            not null,
+    dt_comentario   datetime        not null default current_timestamp
 );
-
-
--- ============================================================
--- TABELA: avaliacoes
--- ============================================================
 
 CREATE TABLE avaliacoes
 (
-    id_receita      INT             NOT NULL,
-    id_usuario      INT             NOT NULL,
-    nota            TINYINT         NOT NULL,
-    dt_avaliacao    DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    PRIMARY KEY (id_receita, id_usuario),
-
-    CHECK (nota BETWEEN 1 AND 5)
+    id_receita      int             not null,
+    id_usuario      int             not null,
+    nota            tinyint         not null,
+    dt_avaliacao    datetime        not null default current_timestamp,
+    check (nota between 1 and 5)
 );
-
-
--- ============================================================
--- TABELA: favoritos
--- ============================================================
 
 CREATE TABLE favoritos
 (
-    id_receita      INT             NOT NULL,
-    id_usuario      INT             NOT NULL,
-    dt_fav          DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    PRIMARY KEY (id_receita, id_usuario)
+    id_receita      int             not null,
+    id_usuario      int             not null,
+    dt_fav          datetime        not null default current_timestamp
 );
 
+ALTER TABLE usuarios ADD CONSTRAINT PK_USER
+PRIMARY KEY (id_usuario);
 
--- ============================================================
--- FOREIGN KEYS
--- ============================================================
+ALTER TABLE categorias ADD CONSTRAINT PK_categorias
+PRIMARY KEY (id_categoria);
 
--- receitas → usuarios
-ALTER TABLE receitas
-ADD CONSTRAINT FK_receitas_usuario
-FOREIGN KEY (id_usuario)
-REFERENCES usuarios(id_usuario);
+ALTER TABLE receitas ADD CONSTRAINT PK_receita
+PRIMARY KEY (id_receita);
 
+ALTER TABLE ingredientes ADD CONSTRAINT PK_ingredientes
+PRIMARY KEY (id_ingredientes);
 
--- receitas → categorias
-ALTER TABLE receitas
-ADD CONSTRAINT FK_receitas_categoria
-FOREIGN KEY (id_categoria)
-REFERENCES categorias(id_categoria);
+ALTER TABLE modo_preparo ADD CONSTRAINT PK_PASSO
+PRIMARY KEY (id_passo);
 
+ALTER TABLE receita_ingredientes ADD CONSTRAINT PK_RI
+PRIMARY KEY (id_receita, id_ingredientes);
 
--- modo_preparo → receitas
-ALTER TABLE modo_preparo
-ADD CONSTRAINT FK_preparo_receita
-FOREIGN KEY (id_receita)
-REFERENCES receitas(id_receita)
+ALTER TABLE tags ADD CONSTRAINT PK_TAGS
+PRIMARY KEY (id_tags);
+
+ALTER TABLE receita_tags ADD CONSTRAINT PK_REC_TAGS
+PRIMARY KEY (id_tags, id_receita);
+
+ALTER TABLE comentarios ADD CONSTRAINT PK_COM
+PRIMARY KEY (id_comentario);
+
+ALTER TABLE avaliacoes ADD CONSTRAINT PK_RECUSER
+PRIMARY KEY (id_receita, id_usuario);
+
+ALTER TABLE favoritos ADD CONSTRAINT PK_FAVS
+PRIMARY KEY (id_receita, id_usuario);
+
+-- autoincrement
+ALTER TABLE usuarios     MODIFY id_usuario      int not null AUTO_INCREMENT;
+ALTER TABLE categorias   MODIFY id_categoria    int not null AUTO_INCREMENT;
+ALTER TABLE receitas     MODIFY id_receita      int not null AUTO_INCREMENT;
+ALTER TABLE ingredientes MODIFY id_ingredientes int not null AUTO_INCREMENT;
+ALTER TABLE modo_preparo MODIFY id_passo        int not null AUTO_INCREMENT;
+ALTER TABLE tags         MODIFY id_tags         int not null AUTO_INCREMENT;
+ALTER TABLE comentarios  MODIFY id_comentario   int not null AUTO_INCREMENT;
+
+-- foreign key
+
+ALTER TABLE receitas ADD CONSTRAINT FK_receitas_usuario
+FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario);
+
+ALTER TABLE receitas ADD CONSTRAINT FK_receitas_categoria
+FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria);
+
+ALTER TABLE modo_preparo ADD CONSTRAINT FK_preparo_receita
+FOREIGN KEY (id_receita) REFERENCES receitas(id_receita)
 ON DELETE CASCADE;
 
-
--- receita_ingredientes → receitas
-ALTER TABLE receita_ingredientes
-ADD CONSTRAINT FK_RI_receita
-FOREIGN KEY (id_receita)
-REFERENCES receitas(id_receita)
+ALTER TABLE receita_ingredientes ADD CONSTRAINT FK_RI_receita
+FOREIGN KEY (id_receita) REFERENCES receitas(id_receita)
 ON DELETE CASCADE;
 
+ALTER TABLE receita_ingredientes ADD CONSTRAINT FK_RI_ingrediente
+FOREIGN KEY (id_ingredientes) REFERENCES ingredientes(id_ingredientes);
 
--- receita_ingredientes → ingredientes
-ALTER TABLE receita_ingredientes
-ADD CONSTRAINT FK_RI_ingrediente
-FOREIGN KEY (id_ingredientes)
-REFERENCES ingredientes(id_ingredientes);
+ALTER TABLE receita_tags ADD CONSTRAINT FK_RT_tags
+FOREIGN KEY (id_tags) REFERENCES tags(id_tags);
 
-
--- receita_tags → tags
-ALTER TABLE receita_tags
-ADD CONSTRAINT FK_RT_tags
-FOREIGN KEY (id_tags)
-REFERENCES tags(id_tags);
-
-
--- receita_tags → receitas
-ALTER TABLE receita_tags
-ADD CONSTRAINT FK_RT_receita
-FOREIGN KEY (id_receita)
-REFERENCES receitas(id_receita)
+ALTER TABLE receita_tags ADD CONSTRAINT FK_RT_receita
+FOREIGN KEY (id_receita) REFERENCES receitas(id_receita)
 ON DELETE CASCADE;
 
+ALTER TABLE comentarios ADD CONSTRAINT FK_COM_usuario
+FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario);
 
--- comentarios → usuarios
-ALTER TABLE comentarios
-ADD CONSTRAINT FK_COM_usuario
-FOREIGN KEY (id_usuario)
-REFERENCES usuarios(id_usuario);
-
-
--- comentarios → receitas
-ALTER TABLE comentarios
-ADD CONSTRAINT FK_COM_receita
-FOREIGN KEY (id_receita)
-REFERENCES receitas(id_receita)
+ALTER TABLE comentarios ADD CONSTRAINT FK_COM_receita
+FOREIGN KEY (id_receita) REFERENCES receitas(id_receita)
 ON DELETE CASCADE;
 
+ALTER TABLE avaliacoes ADD CONSTRAINT FK_AVAL_usuario
+FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario);
 
--- avaliacoes → usuarios
-ALTER TABLE avaliacoes
-ADD CONSTRAINT FK_AVAL_usuario
-FOREIGN KEY (id_usuario)
-REFERENCES usuarios(id_usuario);
-
-
--- avaliacoes → receitas
-ALTER TABLE avaliacoes
-ADD CONSTRAINT FK_AVAL_receita
-FOREIGN KEY (id_receita)
-REFERENCES receitas(id_receita)
+ALTER TABLE avaliacoes ADD CONSTRAINT FK_AVAL_receita
+FOREIGN KEY (id_receita) REFERENCES receitas(id_receita)
 ON DELETE CASCADE;
 
+ALTER TABLE favoritos ADD CONSTRAINT FK_FAV_usuario
+FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario);
 
--- favoritos → usuarios
-ALTER TABLE favoritos
-ADD CONSTRAINT FK_FAV_usuario
-FOREIGN KEY (id_usuario)
-REFERENCES usuarios(id_usuario);
-
-
--- favoritos → receitas
-ALTER TABLE favoritos
-ADD CONSTRAINT FK_FAV_receita
-FOREIGN KEY (id_receita)
-REFERENCES receitas(id_receita)
+ALTER TABLE favoritos ADD CONSTRAINT FK_FAV_receita
+FOREIGN KEY (id_receita) REFERENCES receitas(id_receita)
 ON DELETE CASCADE;
 
+-- inserção de dados
+USE blog_comida;
 
--- ============================================================
--- DADOS INICIAIS
--- ============================================================
+INSERT INTO usuarios (nome, email, senha)
+VALUES ('Mariazinha', 'minimaria@email.com', 'Maria123');
 
--- Usuários
--- As senhas são armazenadas em bcrypt para serem compatíveis
--- com o sistema de autenticação do backend.
+INSERT INTO usuarios (nome, email, senha)
+VALUES ('Josefina', 'finafina@email.com', 'Fima123');
 
-INSERT INTO usuarios
-    (nome, email, senha, perfil)
-VALUES
-    (
-        'Mariazinha',
-        'minimaria@email.com',
-        '$2b$10$x6tgWh6m4nXw1vZSm5OEouW0.HJQFks8kETRx9Ka3Cc7nXR/CCd9S',
-        'autor'
-    );
+INSERT INTO usuarios (nome, email, senha)
+VALUES ('Joao Naldo', 'joaon@email.com', 'Joao123');
 
-INSERT INTO usuarios
-    (nome, email, senha, perfil)
-VALUES
-    (
-        'Josefina',
-        'finafina@email.com',
-        '$2b$10$ezsZlgPETC/1rHxXFFJCduRTzcq9ajWXKSZjiRDiiSfy.Nub7e.9m',
-        'leitor'
-    );
+INSERT INTO categorias (nome, descricao)
+VALUES ('Sobremesa', 'Doces e mini lanches para pós refeição');
 
-INSERT INTO usuarios
-    (nome, email, senha, perfil)
-VALUES
-    (
-        'Joao Naldo',
-        'joaon@email.com',
-        '$2b$10$xhHFZQjSGh85ppmnLFw4w.gmPFpBVcj.gNo.Zplu5yT/lpRpwcX5m',
-        'leitor'
-    );
+INSERT INTO categorias (nome, descricao)
+VALUES ('Salgados', 'Lanches salgados para fim da tarde');
+
+INSERT INTO categorias (nome, descricao)
+VALUES ('Bolos', 'Assados para lanche');
+
+SELECT * FROM usuarios;
 
 
--- Categorias
-
-INSERT INTO categorias
-    (nome, descricao)
-VALUES
-    (
-        'Sobremesa',
-        'Doces e mini lanches para pós refeição'
-    );
-
-INSERT INTO categorias
-    (nome, descricao)
-VALUES
-    (
-        'Salgados',
-        'Lanches salgados para fim da tarde'
-    );
-
-INSERT INTO categorias
-    (nome, descricao)
-VALUES
-    (
-        'Bolos',
-        'Assados para lanche'
-    );
-
-
--- ============================================================
--- FIM DO SCRIPT
--- ============================================================
+SELECT r.*, c.nome AS categoria
+FROM receitas r
+JOIN categorias c ON c.id_categoria = r.id_categoria;
