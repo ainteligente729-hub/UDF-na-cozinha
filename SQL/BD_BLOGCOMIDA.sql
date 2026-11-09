@@ -7,7 +7,7 @@ CREATE TABLE usuarios
     nome            varchar(100)    not null,
     email           varchar(150)    not null unique,
     senha           varchar(255)    not null,
-    perfil          enum('admin','autor','leitor') not null default 'autor',
+    perfil          enum('admin','autor','leitor') not null default 'leitor',
     dt_cadastro     datetime        not null default current_timestamp
 );
 
@@ -24,6 +24,7 @@ CREATE TABLE receitas
     id_usuario      int             not null,
     id_categoria    int             not null,
     titulo          varchar(150)    not null,
+    slug            varchar(75)     not null unique,
     descricao       text,
     tp_prep         int,
     tp_cozi         int,
@@ -107,6 +108,7 @@ CREATE TABLE receita_imagens
     principal         TINYINT(1)       NOT NULL DEFAULT 0,
     dt_upload         DATETIME         NOT NULL
 );
+
 
 ALTER TABLE receita_imagens ADD CONSTRAINT PK_IMAGEM
 PRIMARY KEY (id_imagem);
