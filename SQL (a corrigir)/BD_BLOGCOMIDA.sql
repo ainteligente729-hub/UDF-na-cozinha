@@ -93,6 +93,24 @@ CREATE TABLE favoritos
     dt_fav          datetime        not null default current_timestamp
 );
 
+CREATE TABLE receita_imagens 
+(
+    id_imagem         INT(11)          NOT NULL AUTO_INCREMENT,
+    id_receita        INT(11)          NOT NULL,
+    url_grande        VARCHAR(500)     NOT NULL,
+    url_media         VARCHAR(500)     NOT NULL,
+    url_thumb         VARCHAR(500)     NOT NULL,
+    storage_key       VARCHAR(200)     NOT NULL,
+    alt_text          VARCHAR(200)     DEFAULT NULL,
+    largura           INT(11)          DEFAULT NULL,
+    altura            INT(11)          DEFAULT NULL,
+    principal         TINYINT(1)       NOT NULL DEFAULT 0,
+    dt_upload         DATETIME         NOT NULL,
+  PRIMARY KEY (id_imagem),
+    INDEX FK_IMG_receita (id_receita),
+  FOREIGN KEY (id_receita) REFERENCES receitas(id_receita)
+);
+
 ALTER TABLE usuarios ADD CONSTRAINT PK_USER
 PRIMARY KEY (id_usuario);
 
