@@ -95,3 +95,86 @@ async function carregarDetalhes() {
 }
 
 carregarDetalhes();
+const botaoFavoritar = document.getElementById("btn-favoritar");
+
+let estaFavoritada = false;
+
+botaoFavoritar.addEventListener("click", async function () {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        alert("Você precisa fazer login.");
+        return;
+    }
+
+    if (!idReceita) return;
+
+    const estavaFavoritada = estaFavoritada;
+
+    botaoFavoritar.disabled = true;
+
+    try {
+        const resposta = await fetch(
+            `http://localhost:3000/api/receitas/${idReceita}/favorito`,
+            {
+                method: estavaFavoritada ? "DELETE" : "POST",
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            }
+        );
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao atualizar favorito");
+        }
+
+        estaFavoritada = !estavaFavoritada;
+
+        botaoFavoritar.textContent = estaFavoritada
+            ? "♥ Receita favoritada"
+            : "♡ Favoritar receita";
+
+    } catch (erro) {
+        console.error("Erro ao atualizar favorito:", erro);
+        alert("Não foi possível atualizar o favorito.");
+    } finally {
+        botaoFavoritar.disabled = false;
+    }
+});
+
+async function verificarFavorito() {
+    const token = localStorage.getItem("token");
+
+    if (!token || !idReceita) {
+        return;
+    }
+
+    try {
+        const resposta = await fetch("http://localhost:3000/api/favoritos", {
+            headers: {
+                "Authorization": "Bearer " + token
+            }
+        });
+
+        if (!resposta.ok) {
+            throw new Error("Erro ao verificar favoritos");
+        }
+
+        const favoritos = await resposta.json();
+
+        const jaFavoritada = favoritos.some(function (receita) {
+            return String(receita.id_receita) === String(idReceita);
+        });
+
+        if (jaFavoritada) {
+            botaoFavoritar.textContent = "♥ Receita favoritada";
+        } else {
+            botaoFavoritar.textContent = "♡ Favoritar receita";
+        }
+
+    } catch (erro) {
+        console.error("Erro ao verificar favorito:", erro);
+    }
+}
+
+verificarFavorito();

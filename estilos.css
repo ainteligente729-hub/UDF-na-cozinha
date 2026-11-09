@@ -107,6 +107,21 @@ nav a {
     text-decoration: none;
     font-weight: bold;
 }
+nav #btn-sair {
+    background: transparent;
+    border: none;
+    color: white;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: none;
+}
+
+nav #btn-sair:hover {
+    color: #D99A18;
+    text-decoration: none;
+}
 
 nav a:hover {
     color: #F2C14E;
@@ -416,4 +431,40 @@ footer {
     width: 100%;
     margin-top: 35px;
     padding: 14px;
+}
+#lista-favoritos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.card-favorito {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    width: 280px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.card-favorito img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.card-favorito h3 {
+    color: #142A40;
+    margin: 15px 0 10px;
+}
+
+.card-favorito a {
+    color: #D99A18;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.card-favorito a:hover {
+    color: #142A40;
 }

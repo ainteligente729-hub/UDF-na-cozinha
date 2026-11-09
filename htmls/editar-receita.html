@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar receita | UDF na Cozinha</title>
+    <link rel="stylesheet" href="../estilos.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="../index.html">Início</a>
+            <a href="minhas-receitas.html">Minhas receitas</a>
+        </nav>
+    </header>
+
+    <main class="formulario-receita">
+        <h1>✏️ Editar receita</h1>
+        <p id="mensagem">Carregando receita...</p>
+
+        <form id="form-editar-receita" hidden>
+            <label for="titulo">Título da receita</label>
+            <input type="text" id="titulo" required>
+
+            <label for="descricao">Descrição</label>
+            <textarea id="descricao" rows="4"></textarea>
+
+            <label for="dificuldade">Dificuldade</label>
+            <select id="dificuldade">
+                <option value="facil">Fácil</option>
+                <option value="medio">Médio</option>
+                <option value="dificil">Difícil</option>
+            </select>
+
+            
+<section class="ingredientes">
+    <h2>🥕 Ingredientes</h2>
+    <div id="lista-ingredientes"></div>
+
+    <button type="button" id="adicionar-ingrediente">
+        + Adicionar ingrediente
+    </button>
+</section>
+
+<section class="preparo">
+    <h2>👩‍🍳 Modo de preparo</h2>
+    <div id="lista-passos"></div>
+
+    <button type="button" id="adicionar-passo">
+        + Adicionar passo
+    </button>
+</section>
+
+
+            <button type="submit" class="botao-principal">
+    💾 Salvar alterações
+</button>
+        </form>
+    </main>
+
+    <script src="../js/editar-receita.js"></script>
+</body>
+</html>
