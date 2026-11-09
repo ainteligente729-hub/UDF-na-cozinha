@@ -8,7 +8,31 @@ const { slugUnico } = require('../utils/slug');
 const { calcularFator, escalarIngredientes } = require('../utils/unidades');
 const { buscarCompleta, exigirDonoOuAdmin } = require('../services/receitaService');
 const storage = require('../services/storage');
+// Listar receitas do usuário logado
+router.get('/api/minhas-receitas', autenticar, async (req, res) => {
+    const idUsuario = req.usuario.id_usuario;
 
+    const [receitas] = await pool.query(
+        `SELECT
+            r.id_receita,
+            r.titulo,
+            r.descricao,
+            r.dificuldade,
+            (
+                SELECT ri.url_media
+                FROM receita_imagens ri
+                WHERE ri.id_receita = r.id_receita
+                ORDER BY ri.principal DESC, ri.id_imagem DESC
+                LIMIT 1
+            ) AS imagem_capa
+         FROM receitas r
+         WHERE r.id_usuario = ?
+         ORDER BY r.id_receita DESC`,
+        [idUsuario]
+    );
+
+    res.json(receitas);
+});
 const DIFICULDADES = ['facil', 'medio', 'dificil'];
 const lista = (v) => String(v || '').split(',').map((s) => s.trim()).filter(Boolean);
 const inteiro = (v) => (v !== undefined && v !== '' && Number.isInteger(Number(v)) ? Number(v) : null);
@@ -25,17 +49,21 @@ router.get('/api/filtros', async (req, res) => {
 //     &nota_min=4&ingredientes=frango,batata&modo=todos&sem_ingredientes=leite
 //     &ordem=nota&pagina=1&limite=12
 async function buscar(req, res) {
-  const q = req.query;
-  const where = [];
-  const params = [];
+    const q = req.query;
+    const where = [];
+    const params = [];
 
-  if (q.q) {
-    const like = `%${q.q}%`;
-    where.push(`(r.titulo LIKE ? OR r.\`descricao\` LIKE ? OR EXISTS (
-      SELECT 1 FROM receita_ingredientes ri JOIN ingredientes i ON i.id_ingredientes = ri.id_ingredientes
-       WHERE ri.id_receita = r.id_receita AND i.nome LIKE ?))`);
-    params.push(like, like, like);
-  }
+    if (q.q) {
+        const like = `%${q.q}%`;
+
+        where.push(`(r.titulo LIKE ? OR r.\`descricao\` LIKE ? OR EXISTS (
+            SELECT 1 FROM receita_ingredientes ri
+            JOIN ingredientes i ON i.id_ingredientes = ri.id_ingredientes
+            WHERE ri.id_receita = r.id_receita AND i.nome LIKE ?
+        ))`);
+
+        params.push(like, like, like);
+    }
 
   if (q.categoria) {
     if (inteiro(q.categoria) !== null) { where.push('r.id_categoria = ?'); params.push(Number(q.categoria)); }

@@ -44,6 +44,25 @@
         .detalhes-receita li {
             margin-bottom: 12px;
         }
+        #btn-favoritar {
+    background: white;
+    color: #D99A18;
+    border: 2px solid #D99A18;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    display: block;
+visibility: visible;
+}
+
+#btn-favoritar:hover {
+    background: #D99A18;
+    color: white;
+}
+
     </style>
 </head>
 
@@ -64,10 +83,13 @@
         <p id="mensagem">Carregando receita...</p>
 
         <div id="conteudo-receita" hidden>
-            <h1 id="titulo-receita"></h1>
+         <h1 id="titulo-receita"></h1>
 
-            <img id="imagem-receita" class="foto-receita" alt="">
+<button type="button" id="btn-favoritar" data-visivel="logado">
+    ♡ Favoritar receita
+</button>
 
+<img id="imagem-receita" class="foto-receita" alt="">
             <p id="descricao-receita"></p>
 
             <div class="informacoes">
@@ -87,5 +109,6 @@
     </main>
 
     <script src="../js/detalhes-receita.js"></script>
+    <script src="../js/menu.js"></script>
 </body>
 </html>
