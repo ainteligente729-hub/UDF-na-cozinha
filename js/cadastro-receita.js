@@ -46,20 +46,12 @@ botaoIngrediente.addEventListener("click", function () {
         nome + " - " + quantidade + " " + unidade;
 
     // Botão remover
- botaoRemover.addEventListener("click", function () {
+    const botaoRemover = document.createElement("button");
 
-    const indice = Array.from(
-        listaPassos.children
-    ).indexOf(item);
+    botaoRemover.type = "button";
+    botaoRemover.textContent = "Remover";
 
-    if (indice !== -1) {
-        passos.splice(indice, 1);
-    }
-
-    item.remove();
-
-    atualizarNumeracaoPassos();
-});
+    botaoRemover.addEventListener("click", function () {
 
         // Descobre a posição do ingrediente no array
         const indice = ingredientes.indexOf(ingrediente);
@@ -375,14 +367,6 @@ formulario.addEventListener("submit", async function (event) {
             return;
         }
 
-            if (!respostaImagem.ok) {
-            const erroImagem = await respostaImagem.json();
-            console.error("Erro ao enviar imagem:", erroImagem);
-
-            alert("A receita foi publicada, mas não foi possível salvar a foto.");
-            return;
-        }    
-        
 
         // ==================================================
         // SUCESSO
@@ -430,10 +414,13 @@ if (arquivoImagem) {
         return;
     }
 }
-
 alert("Receita publicada com sucesso!");
-window.location.href = "index.html";
 
+console.log("URL atual:", window.location.href);
+
+window.location.assign(
+    new URL("index.html", window.location.href).href
+);
 
     } catch (erro) {
 

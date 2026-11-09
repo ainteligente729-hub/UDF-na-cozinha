@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
 
         const favoritos = await resposta.json();
+        console.log("Dados dos favoritos:", favoritos);
         lista.innerHTML = "";
 
         if (favoritos.length === 0) {
@@ -41,6 +42,47 @@ if (receita.imagem_capa) {
     imagem.alt = "Imagem não disponível";
     imagem.style.display = "none";
 }
+ 
+
+const botaoFavorito = document.createElement("button");
+
+botaoFavorito.type = "button";
+botaoFavorito.textContent = "❤️";
+botaoFavorito.className = "botao-remover-favorito";
+botaoFavorito.title = "Remover dos favoritos";
+botaoFavorito.setAttribute("aria-label", "Remover dos favoritos");
+
+botaoFavorito.addEventListener("click", async function () {
+    botaoFavorito.disabled = true;
+
+    try {
+        const resposta = await fetch(
+            `http://localhost:3000/api/receitas/${receita.id_receita}/favorito`,
+            {
+                method: "DELETE",
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            }
+        );
+
+        if (!resposta.ok) {
+            throw new Error("Não foi possível remover o favorito.");
+        }
+
+        card.remove();
+
+        if (lista.querySelectorAll(".card-favorito").length === 0) {
+            lista.textContent = "Você ainda não tem receitas favoritas. ❤️";
+        }
+
+    } catch (erro) {
+        console.error(erro);
+        alert("Erro ao remover a receita dos favoritos.");
+        botaoFavorito.disabled = false;
+    }
+});
+
 
             const titulo = document.createElement("h3");
             titulo.textContent = receita.titulo;
@@ -52,7 +94,7 @@ if (receita.imagem_capa) {
             link.href = `receita.html?id=${receita.id_receita}`;
             link.textContent = "Ver receita";
 
-           card.append(imagem, titulo, descricao, link);
+          card.append(imagem, botaoFavorito, titulo, descricao, link);
             lista.appendChild(card);
         });
 
