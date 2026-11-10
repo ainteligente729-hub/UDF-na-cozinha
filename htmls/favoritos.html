@@ -8,29 +8,76 @@
 </head>
 <body>
 
-    <header>
-  <nav>
-    <a href="index.html">Início</a>
+   
+<header class="cabecalho-site">
 
-    <a href="login.html" data-visivel="visitante">Entrar</a>
-    <a href="cadastro.html" data-visivel="visitante">Criar conta</a>
+    <a href="index.html" class="marca-site">
+        <img
+            src="../imagem/Logo UDF-Na-Cozinha.png"
+            alt="Logo UDF na Cozinha"
+        >
+    </a>
 
-   <a href="minhas-receitas.html" data-visivel="logado">Minhas receitas</a>
-    <a href="cadastro-receita.html" data-visivel="autor admin">Nova receita</a>
-    <a href="admin.html" data-visivel="admin">Painel</a>
+    <nav class="menu-principal">
 
-    <button type="button" id="btn-sair" data-visivel="logado">Sair</button>
-</nav>
+        <a href="index.html">Início</a>
+
+        <a href="minhas-receitas.html" data-visivel="logado">
+            Minhas receitas
+        </a>
+
+        <a href="cadastro-receita.html" data-visivel="logado">
+            Cadastrar receita
+        </a>
+
+        <a href="favoritos.html" data-visivel="logado">
+            Favoritos
+        </a>
+
+        <a href="perfil.html" data-visivel="logado">
+            Perfil
+        </a>
+
+        <button type="button" id="btn-sair" data-visivel="logado">
+            Sair
+        </button>
+
+        <a href="login.html" data-visivel="visitante">
+            Entrar
+        </a>
+
+        <a href="cadastro.html" data-visivel="visitante">
+            Criar conta
+        </a>
+
+    </nav>
+
 </header>
 
+
+
 <main class="pagina-favoritos">
-    <h1>❤️ Minhas receitas favoritas</h1>
-    <p>Aqui você encontra as receitas que salvou.</p>
+
+    <section class="topo-favoritos">
+      <div class="icone-favoritos">
+    <span>♥</span>
+</div>
+
+        <h1>Minhas receitas favoritas</h1>
+
+        <p>
+            Seus sabores preferidos, guardados em um só lugar.
+        </p>
+
+        <div class="linha-decorativa"></div>
+    </section>
 
     <section id="lista-favoritos">
         <p>Carregando suas receitas favoritas...</p>
     </section>
+
 </main>
+
 
 <script src="../js/menu.js"></script>
 <script src="../js/favoritos.js"></script>
