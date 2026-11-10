@@ -469,198 +469,2101 @@ footer {
     color: #142A40;
 }
 
-/* =========================================================
-PERFIL
-========================================================= */
 
-.perfil {
-max-width: 1100px;
-margin: 40px auto;
-padding: 0 30px 50px;
-box-sizing: border-box;
+/* ==============================
+   PÁGINA DE PERFIL
+================================ */
+
+.pagina-perfil {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
 }
 
-/* CABEÇALHO DO PERFIL */
-
-.cabecalho-perfil {
-background-color: white;
-padding: 40px;
-border-radius: 15px;
-
-display: flex;
-align-items: center;
-gap: 35px;
-
-box-sizing: border-box;
-
+.pagina-perfil h1 {
+    color: #142A40;
+    font-size: 32px;
+    margin-bottom: 10px;
 }
 
-/* FOTO / AVATAR */
-
-.avatar {
-width: 150px;
-height: 150px;
-
-border-radius: 50%;
-
-background-color: #142A40;
-
-display: flex;
-align-items: center;
-justify-content: center;
-
-flex-shrink: 0;
-
+.pagina-perfil > p {
+    color: #555;
+    margin-bottom: 30px;
 }
 
-.avatar span {
-color: #F2C14E;
-font-size: 60px;
-font-weight: bold;
+.card-perfil {
+    background-color: white;
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 35px;
+    border-radius: 15px;
+    border: 1px solid #CCCCCC;
+    box-sizing: border-box;
+    text-align: center;
 }
 
-/* INFORMAÇÕES */
+.avatar-perfil {
+    width: 100px;
+    height: 100px;
+    background-color: #F8F6F0;
+    border: 3px solid #D99A18;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    margin: 0 auto 20px;
+}
+
+.card-perfil h2 {
+    color: #142A40;
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.subtitulo-perfil {
+    color: #777;
+    margin-bottom: 25px;
+}
 
 .informacoes-perfil {
-flex: 1;
+    background-color: #F8F6F0;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    margin: 25px 0;
 }
 
-.informacoes-perfil h1 {
-text-align: left;
-margin: 0 0 5px;
-
-color: #142A40;
-font-size: 32px;
-
+.informacoes-perfil h3 {
+    color: #142A40;
+    margin-bottom: 20px;
 }
 
-.nome-usuario {
-color: #D99A18;
-font-weight: bold;
-margin: 0 0 15px;
+.informacoes-perfil p {
+    color: #555;
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
 }
 
-.biografia {
-color: #555;
-line-height: 1.5;
-max-width: 600px;
+.botao-perfil {
+    display: inline-block;
+    padding: 13px 30px;
+    background-color: #D99A18;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
 }
 
-/* BOTÃO EDITAR */
-
-.botao-editar {
-margin-top: 10px;
-
-padding: 11px 25px;
-
-background-color: #D99A18;
-color: white;
-
-border: none;
-border-radius: 8px;
-
-font-size: 15px;
-font-weight: bold;
-
-cursor: pointer;
-
-transition: 0.3s;
-
+.botao-perfil:hover {
+    background-color: #B77D0F;
+    color: white;
 }
 
-.botao-editar {
-background-color: #B77D0F;
+@media (max-width: 600px) {
+    .pagina-perfil {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .card-perfil {
+        padding: 20px;
+    }
 }
 
-/* ESTATÍSTICAS */
+/* PERFIL DO USUÁRIO */
 
-.estatisticas {
-background-color: white;
-
-margin-top: 20px;
-padding: 25px;
-
-border-radius: 12px;
-
-display: flex;
-justify-content: center;
-gap: 80px;
-
-box-sizing: border-box;
-
+.pagina-perfil {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
 }
 
-.estatistica {
-text-align: center;
+.cabecalho-perfil {
+    text-align: center;
+    padding: 30px;
 }
 
-.estatistica strong {
-display: block;
-
-color: #142A40;
-font-size: 25px;
-
-margin-bottom: 5px;
-
+.avatar-perfil {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #F5E6C7;
+    border: 3px solid #D99A18;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    margin: 0 auto 20px;
 }
 
-.estatistica span {
-color: #555;
-font-size: 15px;
+.cabecalho-perfil h1 {
+    color: #142A40;
 }
 
-/* SEÇÕES */
-
-.secao-perfil {
-margin-top: 40px;
+.cabecalho-perfil p {
+    color: #666;
 }
 
-.secao-perfil h2 {
-color: #142A40;
-text-align: center;
-
-margin-bottom: 25px;
-
+.receitas-perfil h2 {
+    color: #142A40;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-/* LISTA DE RECEITAS */
+#lista-receitas-perfil {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
 
-.secao-perfil .lista-receitas {
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
-gap: 25px;
+#lista-receitas-perfil .card-receita {
+    width: 280px;
+}
+
+/* BOTÃO EDITAR NO PERFIL */
+
+.botao-editar-perfil {
+    display: inline-block;
+    margin-left: 15px;
+    padding: 8px 12px;
+    background-color: #142A40;
+    color: white !important;
+    border-radius: 6px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.botao-editar-perfil:hover {
+    background-color: #D99A18;
+    color: white !important;
+}
+
+
+/* FOTO DE PERFIL */
+
+.area-foto-perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.foto-perfil {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #D99A18;
+}
+
+.foto-perfil[hidden] {
+    display: none;
+}
+
+.avatar-perfil[hidden] {
+    display: none;
+}
+
+.botao-foto {
+    display: inline-block;
+    width: auto;
+    background-color: #142A40;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.botao-foto:hover {
+    background-color: #D99A18;
+}
+
+#input-foto {
+    display: none;
+}
+
+/* BOTÃO VER PERFIL DO AUTOR */
+
+.botao-ver-perfil {
+    display: inline-block;
+    margin-left: 12px;
+    padding: 8px 15px;
+    background-color: #142A40;
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.botao-ver-perfil:hover {
+    background-color: #D99A18;
+    color: white;
+}
+
+
+/* ======================================
+   UDF NA COZINHA - VISUAL GASTRONÔMICO
+   ====================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+    --azul: #142A40;
+    --dourado: #D99A18;
+    --creme: #F8F6F0;
+    --texto: #30343A;
+}
+
+body {
+    background-color: var(--creme);
+    color: var(--texto);
+    font-family: 'DM Sans', sans-serif;
+}
+
+button, input, select, textarea {
+    font-family: 'DM Sans', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* MENU TRANSLÚCIDO */
+
+.cabecalho-site {
+   position: relative;
+top: auto;
+    z-index: 1000;
+
+    width: calc(100% - 48px);
+    max-width: 1440px;
+    margin: 12px auto 0;
+    box-sizing: border-box;
+
+    padding: 14px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+
+    background: rgba(248, 246, 240, 0.84);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 22px;
+
+    box-shadow: 0 8px 30px rgba(20, 42, 64, 0.12);
+}
+
+.cabecalho-site .marca-site {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.cabecalho-site .marca-site img {
+    width: 145px;
+    height: auto;
+    display: block;
+}
+
+.menu-principal {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+}
+
+.menu-principal a {
+    color: var(--azul);
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.menu-principal a:hover {
+    color: #B77D0F;
+}
+
+.menu-principal #btn-sair {
+    background: var(--azul);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 11px 23px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.menu-principal #btn-sair:hover {
+    background: var(--dourado);
+    color: white;
+}
+
+/* APRESENTAÇÃO */
+
+.apresentacao {
+    padding: 100px 25px;
+    text-align: center;
+    background: linear-gradient(
+        135deg,
+        #F8F6F0 0%,
+        #F2E7D5 100%
+    );
+}
+
+.apresentacao h1 {
+    font-size: clamp(38px, 5vw, 64px);
+    color: var(--azul);
+    max-width: 850px;
+    margin: 0 auto 22px;
+    line-height: 1.15;
+}
+
+.apresentacao p {
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 620px;
+    margin: 0 auto;
+    color: #555;
+}
+
+/* BUSCA */
+
+.busca {
+    max-width: 1000px;
+    margin: 45px auto;
+    padding: 35px;
+    background: #FFFFFF;
+    border-radius: 22px;
+    box-shadow: 0 10px 35px rgba(20, 42, 64, 0.06);
+}
+
+.busca h2 {
+    font-size: 30px;
+}
+
+.busca form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.busca input {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    margin: 0;
+    border-radius: 12px;
+    background: #FCFBF8;
+}
+
+.busca button {
+    border-radius: 12px;
+    padding: 13px 28px;
+}
+
+/* CARDS DE RECEITAS */
+
+.receitas {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 35px 24px 75px;
+}
+
+.receitas > h2 {
+    font-size: 38px;
+    margin-bottom: 35px;
+}
+
+.lista-receitas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px;
+}
+
+.card-receita {
+    width: 340px;
+    max-width: 100%;
+    background: white;
+    border: 1px solid #EEE8DF;
+    border-radius: 20px;
+    padding: 16px;
+    overflow: hidden;
+
+    box-shadow: 0 8px 24px rgba(20, 42, 64, 0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-receita:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 35px rgba(20, 42, 64, 0.12);
+}
+
+.card-receita img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 18px;
+}
+
+.card-receita h3 {
+    font-size: 24px;
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+
+.card-receita p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #666;
+}
+
+.card-receita a {
+    color: #B77D0F;
+    font-weight: 700;
 }
 
 /* RESPONSIVIDADE */
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
+    .cabecalho-site {
+        flex-direction: column;
+        width: calc(100% - 24px);
+        padding: 18px;
+    }
 
-.perfil {
-    padding: 0 20px 40px;
+    .menu-principal {
+        justify-content: center;
+        gap: 14px;
+    }
+
+    .apresentacao {
+        padding: 65px 20px;
+    }
+
+    .busca {
+        margin: 25px 15px;
+        padding: 24px;
+    }
+
+    .busca form {
+        flex-direction: column;
+    }
+
+    .busca input,
+    .busca button {
+        width: 100%;
+    }
 }
 
-.cabecalho-perfil {
+/* Cabeçalho mais fino e elegante */
+.cabecalho-site {
+    position: relative;
+    top: auto;
+    padding: 8px 28px;
+    min-height: 72px;
+    border-radius: 18px;
+}
+
+.cabecalho-site .marca-site img {
+    width: 90px;
+    height: auto;
+}
+
+.menu-principal {
+    gap: 18px;
+}
+
+.menu-principal #btn-sair {
+    padding: 9px 20px;
+}
+
+.apresentacao {
+    background-image: url("imagem/fundo-macarrao.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-height: 420px;
+    padding: 70px 8%;
+
+    display: flex;
     flex-direction: column;
-    text-align: center;
-    padding: 30px 20px;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
 }
 
-.informacoes-perfil h1 {
-    text-align: center;
+.apresentacao h1 {
+    max-width: 550px;
+    margin: 0 0 20px;
+    text-align: left;
 }
 
-.biografia {
+.apresentacao p {
+    max-width: 460px;
+    margin: 0;
+    text-align: left;
+}
+
+@media (max-width: 700px) {
+    .apresentacao {
+        background-position: 60% center;
+        padding: 55px 25px;
+    }
+}
+
+
+/* =====================================
+   TRANSIÇÃO SUAVE DA IMAGEM PRINCIPAL
+   ===================================== */
+
+.apresentacao {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    background-image: url("imagem/fundo-macarrao.png");
+    background-size: cover;
+    background-position: center;
+
+    min-height: 440px;
+    padding: 80px 8% 130px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+/* Degradê que mistura a foto com o fundo */
+.apresentacao::after {
+    content: "";
+    position: absolute;
+
+    bottom: -1px;
+    left: 0;
+    right: 0;
+
+    height: 190px;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(248, 246, 240, 0) 0%,
+        rgba(248, 246, 240, 0.35) 35%,
+        rgba(248, 246, 240, 0.75) 70%,
+        #F8F6F0 100%
+    );
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Mantém o texto acima do degradê */
+.apresentacao h1,
+.apresentacao p {
+    position: relative;
+    z-index: 1;
+}
+
+/* Busca com aparência mais leve */
+.busca {
+    position: relative;
+    max-width: 1000px;
+    margin: -15px auto 55px;
+
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+
+    border-radius: 24px;
+    box-shadow: 0 12px 35px rgba(20, 42, 64, 0.07);
+}
+
+/* Ajuste para celular */
+@media (max-width: 700px) {
+    .apresentacao {
+        min-height: 380px;
+        padding: 70px 25px 120px;
+        background-position: 60% center;
+    }
+
+    .apresentacao::after {
+        height: 150px;
+    }
+
+    .busca {
+        margin: 0 15px 40px;
+    }
+}
+
+/* NOVA PALETA GASTRONÔMICA */
+
+:root {
+    --creme: #F1E5DA;
+    --azul: #142A40;
+    --dourado: #C68A20;
+    --texto: #30343A;
+}
+
+body {
+    background-color: #F1E5DA;
+    color: var(--texto);
+}
+
+/* Menu creme translúcido */
+.cabecalho-site {
+    background: rgba(255, 249, 243, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+/* Foto principal com degradê integrado */
+.apresentacao {
+    background-image: url("imagem/fundo-macarrao.png");
+    background-color: #F1E5DA;
+}
+
+/* Mistura a imagem com a nova cor do site */
+.apresentacao::after {
+    background: linear-gradient(
+        to bottom,
+        rgba(241, 229, 218, 0) 0%,
+        rgba(241, 229, 218, 0.25) 30%,
+        rgba(241, 229, 218, 0.70) 65%,
+        #F1E5DA 100%
+    );
+}
+
+/* Busca */
+.busca {
+    background: #FFF9F3;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+/* Cards */
+.card-receita {
+    background: #FFF9F3;
+    border: 1px solid #f8f6f4;
+}
+
+/* Botões */
+.busca button,
+.botao-principal {
+    background-color: #C68A20;
+    color: white;
+}
+
+.busca button:hover,
+.botao-principal:hover {
+    background-color: #A86F12;
+}
+
+/* =====================================
+   IMAGEM ATRÁS DO CABEÇALHO
+   ===================================== */
+
+/* Cabeçalho sobre a imagem */
+.cabecalho-site {
+    position: relative;
+    z-index: 10;
+
+    margin: 12px auto 0;
+    padding: 8px 28px;
+
+    background: rgba(255, 249, 243, 0.78);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 18px;
+}
+
+/* Faz a imagem subir atrás do menu */
+.apresentacao {
+    position: relative;
+
+    margin-top: -110px;
+    padding-top: 190px;
+    padding-bottom: 130px;
+
+    background-image: url("imagem/fundo-macarrao.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Mantém a transição suave embaixo */
+.apresentacao::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    height: 190px;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(241, 229, 218, 0) 0%,
+        rgba(241, 229, 218, 0.35) 40%,
+        #F1E5DA 100%
+    );
+
+    pointer-events: none;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 800px) {
+    .apresentacao {
+        margin-top: -150px;
+        padding-top: 220px;
+    }
+}
+
+/* =====================================
+   PÁGINA DE RECEITAS FAVORITAS
+   ===================================== */
+
+#lista-favoritos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+
+    max-width: 1200px;
+    margin: 35px auto 70px;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+.card-favorito {
+    width: 100%;
+    box-sizing: border-box;
+
+    background: #FFF9F3;
+    border: 1px solid #E8D5C3;
+    border-radius: 20px;
+    padding: 16px;
+    overflow: hidden;
+
+    box-shadow: 0 8px 24px rgba(20, 42, 64, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-favorito:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 35px rgba(20, 42, 64, 0.12);
+}
+
+.card-favorito img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+}
+
+.card-favorito h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #142A40;
+    font-size: 24px;
+    line-height: 1.3;
+    margin: 18px 0 10px;
+}
+
+.card-favorito p {
+    color: #665B52;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.card-favorito a {
+    display: inline-block;
+    color: #B07818;
+    font-weight: 700;
+    margin-top: 12px;
+    text-decoration: none;
+}
+
+.card-favorito a:hover {
+    color: #142A40;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 900px) {
+    #lista-favoritos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    #lista-favoritos {
+        grid-template-columns: 1fr;
+        padding: 0 16px;
+    }
+
+    .card-favorito img {
+        height: 210px;
+    }
+}
+
+.topo-favoritos {
+    text-align: center;
+    padding: 65px 20px 25px;
+}
+
+.topo-favoritos .icone-favoritos {
+    display: block;
+    font-size: 38px;
+    color: #C68A20;
+    margin-bottom: 12px;
+}
+
+.topo-favoritos h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(32px, 4vw, 48px);
+    color: #142A40;
+    margin: 0 0 15px;
+}
+
+.topo-favoritos p {
+    font-size: 16px;
+    color: #665B52;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ====================================
+   VISUAL ELEGANTE - PÁGINA FAVORITOS
+   ==================================== */
+
+.pagina-favoritos {
+    min-height: 75vh;
+    padding: 20px 0 60px;
+    background: #F1E5DA;
+}
+
+.topo-favoritos {
+    text-align: center;
+    padding: 65px 20px 30px;
+}
+
+.icone-favoritos {
+    display: block;
+    color: #C68A20;
+    font-size: 46px;
+    margin-bottom: 12px;
+}
+
+.topo-favoritos h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(34px, 4vw, 50px);
+    color: #142A40;
+    margin: 0 0 16px;
+}
+
+.topo-favoritos p {
+    font-family: 'DM Sans', sans-serif;
+    color: #665B52;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.linha-decorativa {
+    width: 70px;
+    height: 3px;
+    background: #C68A20;
+    border-radius: 20px;
+    margin: 25px auto 0;
+}
+
+#lista-favoritos {
+    max-width: 1200px;
+    margin: 35px auto;
+}
+
+#lista-favoritos > p {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #665B52;
+    font-size: 16px;
+}
+
+
+/* BOTÃO DE CORAÇÃO NOS CARDS */
+
+.card-receita button,
+.card-favorito button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 9px 18px;
+    margin: 4px 0 12px;
+
+    background: #FFF9F3;
+    color: #142A40;
+
+    border: 1px solid #D9B77A;
+    border-radius: 30px;
+
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.card-receita button:hover,
+.card-favorito button:hover {
+    background: #C68A20;
+    color: white;
+    border-color: #C68A20;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(198, 138, 32, 0.2);
+}
+
+/* ESTADO VAZIO - RECEITAS FAVORITAS */
+
+#lista-favoritos:has(.favoritos-vazio) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.favoritos-vazio {
+    width: 100%;
+    max-width: 620px;
+    box-sizing: border-box;
+    margin: 15px auto 60px;
+    padding: 48px 35px;
+
+    background: #FFF9F3;
+    border: 1px solid #E8D5C3;
+    border-radius: 24px;
+
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(20, 42, 64, 0.06);
+}
+
+.favoritos-vazio-icone {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #F1E5DA;
+    color: #C68A20;
+    border-radius: 50%;
+    font-size: 42px;
+}
+
+.favoritos-vazio h2 {
+    color: #142A40;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px;
+    line-height: 1.3;
+    margin: 0 0 16px;
+}
+
+.favoritos-vazio p {
+    max-width: 450px;
+    margin: 0 auto 28px;
+    color: #665B52;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.favoritos-vazio-botao {
+    display: inline-block;
+    padding: 13px 28px;
+
+    background: #C68A20;
+    color: white !important;
+    border-radius: 30px;
+
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.favoritos-vazio-botao:hover {
+    background: #A86F12;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .favoritos-vazio {
+        padding: 35px 22px;
+        margin: 10px 16px 40px;
+    }
+
+    .favoritos-vazio h2 {
+        font-size: 24px;
+    }
+}
+
+/* CABEÇALHO PADRONIZADO */
+
+.cabecalho-site {
+    position: relative;
+    top: auto;
+    z-index: 10;
+
+    width: calc(100% - 48px);
+    max-width: 1440px;
+    margin: 12px auto 0;
+    padding: 8px 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    background: rgba(255, 249, 243, 0.78);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(20, 42, 64, 0.10);
+}
+
+.cabecalho-site .marca-site img {
+    width: 90px;
+    height: auto;
+    display: block;
+}
+
+.menu-principal {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.menu-principal a {
+    color: #142A40;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.menu-principal a:hover {
+    color: #C68A20;
+}
+
+.menu-principal #btn-sair {
+    background: #142A40;
+    color: white;
+    padding: 9px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+@media (max-width: 800px) {
+    .cabecalho-site {
+        width: calc(100% - 24px);
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    .menu-principal {
+        justify-content: center;
+        gap: 14px;
+    }
+}
+
+/* ====================================
+   MINHAS RECEITAS - VISUAL PROFISSIONAL
+   ==================================== */
+
+/* Fundo e organização da página */
+body:has(#lista-minhas-receitas) {
+    background: #F1E5DA;
+}
+
+/* Título e descrição */
+body:has(#lista-minhas-receitas) main {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 55px 24px 80px;
+    box-sizing: border-box;
+}
+
+body:has(#lista-minhas-receitas) main > h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(36px, 4vw, 50px);
+    color: #142A40;
+    text-align: center;
+    margin: 0 0 15px;
+}
+
+body:has(#lista-minhas-receitas) main > p {
+    text-align: center;
+    color: #665B52;
+    font-size: 16px;
+    margin: 0 auto 45px;
+    line-height: 1.7;
+}
+
+/* Grade de receitas */
+#lista-minhas-receitas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cards */
+#lista-minhas-receitas .card-receita {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 16px;
+
+    background: #FFF9F3;
+    border: 1px solid #E8D5C3;
+    border-radius: 22px;
+
+    box-shadow: 0 8px 25px rgba(20, 42, 64, 0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#lista-minhas-receitas .card-receita:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 35px rgba(20, 42, 64, 0.12);
+}
+
+#lista-minhas-receitas .card-receita img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    display: block;
+    border-radius: 15px;
+    margin-bottom: 18px;
+}
+
+#lista-minhas-receitas .card-receita h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 25px;
+    color: #142A40;
+    margin: 0 0 12px;
+}
+
+#lista-minhas-receitas .card-receita p {
+    color: #665B52;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Links */
+#lista-minhas-receitas .card-receita a {
+    display: inline-block;
+    margin: 12px 10px 0 0;
+    color: #B07818;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+#lista-minhas-receitas .card-receita a:hover {
+    color: #142A40;
+}
+
+/* Botão excluir */
+#lista-minhas-receitas .card-receita button {
+    background: #FFF9F3;
+    border: 1px solid #D9B77A;
+    color: #142A40;
+    border-radius: 30px;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#lista-minhas-receitas .card-receita button:hover {
+    background: #FCE8E6;
+    color: #A94442;
+    border-color: #A94442;
+}
+
+/* Responsividade */
+@media (max-width: 950px) {
+    #lista-minhas-receitas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    #lista-minhas-receitas {
+        grid-template-columns: 1fr;
+    }
+
+    body:has(#lista-minhas-receitas) main {
+        padding: 35px 16px 60px;
+    }
+}
+
+/* =========================================
+   MINHAS RECEITAS - CARDS ALINHADOS
+   ========================================= */
+
+#lista-minhas-receitas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    align-items: stretch;
+}
+
+/* Todos os cards com estrutura uniforme */
+#lista-minhas-receitas .card-receita {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 18px;
+
+    background: #FFF9F3;
+    border: 1px solid #E8D5C3;
+    border-radius: 22px;
+}
+
+/* Imagens padronizadas */
+#lista-minhas-receitas .card-receita img {
+    width: 100%;
+    height: 230px;
+    max-width: none;
+    object-fit: cover;
+    display: block;
+    border-radius: 15px;
+    margin: 0 0 20px;
+}
+
+/* Títulos */
+#lista-minhas-receitas .card-receita h3 {
+    font-size: 25px;
+    line-height: 1.3;
+    margin: 0 0 12px;
+}
+
+/* Descrição */
+#lista-minhas-receitas .card-receita p {
+    line-height: 1.6;
+    margin: 0 0 20px;
+    overflow-wrap: anywhere;
+}
+
+/* Links Ver receita e Editar */
+#lista-minhas-receitas .card-receita a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 42px;
+    box-sizing: border-box;
+
+    margin: 6px 0 0;
+    padding: 10px 14px;
+
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+/* Ver receita */
+#lista-minhas-receitas .card-receita a[href^="receita.html"] {
+    background: #142A40;
+    color: white;
+    margin-top: auto;
+}
+
+#lista-minhas-receitas .card-receita a[href^="receita.html"]:hover {
+    background: #234766;
+}
+
+/* Editar */
+#lista-minhas-receitas .card-receita a[href^="editar-receita.html"] {
+    background: #F4E7D6;
+    color: #8B621D;
+}
+
+#lista-minhas-receitas .card-receita a[href^="editar-receita.html"]:hover {
+    background: #EAD3B4;
+}
+
+/* Excluir */
+#lista-minhas-receitas .card-receita button {
+    width: 100%;
+    min-height: 42px;
+    box-sizing: border-box;
+
+    margin: 6px 0 0;
+    padding: 10px 14px;
+
+    background: #FBEAE7;
+    color: #A94442;
+    border: 1px solid #E9C6C0;
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+#lista-minhas-receitas .card-receita button:hover {
+    background: #A94442;
+    color: white;
+    border-color: #A94442;
+}
+
+/* Responsividade */
+@media (max-width: 950px) {
+    #lista-minhas-receitas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    #lista-minhas-receitas {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* CENTRALIZAR IMAGENS DOS CARDS */
+
+#lista-minhas-receitas .card-receita img {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    height: 230px;
+
+    object-fit: cover;
+    object-position: center;
+
     margin-left: auto;
     margin-right: auto;
+
+    border-radius: 15px;
+    box-sizing: border-box;
 }
 
-.estatisticas {
-    gap: 30px;
+/* IMAGENS DE MINHAS RECEITAS IGUAIS À HOME */
+
+#lista-minhas-receitas .card-receita {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 18px;
+    box-sizing: border-box;
 }
 
-.estatistica strong {
-    font-size: 22px;
+#lista-minhas-receitas .card-receita img {
+    display: block;
+
+    width: 100%;
+    max-width: none;
+    height: 245px;
+
+    object-fit: cover;
+    object-position: center;
+
+    margin: 0 0 200px;
+    padding: 10px;
+
+    border-radius: 15px;
+    box-sizing: border-box;
+
+    /* Impede deslocamentos de estilos antigos */
+    float: none;
+    position: static;
+    transform: none;
 }
 
+/* ========================================
+   MINHAS RECEITAS - AJUSTE FINAL DOS CARDS
+   ======================================== */
+
+/* Grade de cards */
+#lista-minhas-receitas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 26px;
+    align-items: start;
+}
+
+/* Card compacto */
+#lista-minhas-receitas .card-receita {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-content: start;
+    align-items: start;
+    gap: 10px;
+
+    height: auto;
+    min-height: 0;
+    width: 100%;
+    margin: 0;
+    padding: 16px;
+
+    box-sizing: border-box;
+    background: #FFF9F3;
+    border: 1px solid #E8D5C3;
+    border-radius: 20px;
+}
+
+/* Imagem ocupando a largura do card */
+#lista-minhas-receitas .card-receita img {
+    grid-column: 1 / -1;
+    display: block;
+    width: 100%;
+    height: 100px;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 14px;
+}
+
+/* Título e descrição em linhas inteiras */
+#lista-minhas-receitas .card-receita h3,
+#lista-minhas-receitas .card-receita p {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 0;
+}
+
+#lista-minhas-receitas .card-receita h3 {
+    font-size: 24px;
+    margin-top: 8px;
+}
+
+#lista-minhas-receitas .card-receita p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Botões lado a lado */
+#lista-minhas-receitas .card-receita a,
+#lista-minhas-receitas .card-receita button {
+    grid-column: auto;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 38px;
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 8px 5px;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+
+    border-radius: 10px;
+    transform: none;
+}
+
+/* Ver receita */
+#lista-minhas-receitas .card-receita a[href^="receita.html"] {
+    background: #142A40;
+    color: white;
+}
+
+/* Editar */
+#lista-minhas-receitas .card-receita a[href^="editar-receita.html"] {
+    background: #F4E7D6;
+    color: #8B621D;
+}
+
+/* Excluir */
+#lista-minhas-receitas .card-receita button {
+    background: #FBEAE7;
+    color: #A94442;
+    border: 1px solid #E9C6C0;
+}
+
+/* Responsividade */
+@media (max-width: 950px) {
+    #lista-minhas-receitas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    #lista-minhas-receitas {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =====================================
+   CABEÇALHO - CADASTRAR RECEITA
+   ===================================== */
+
+body:has(.cabecalho-site) .cabecalho-site {
+    position: relative;
+    top: auto;
+    left: auto;
+
+    width: calc(100% - 48px);
+    max-width: 1440px;
+    margin: 12px auto 0;
+    padding: 8px 28px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    background: rgba(255, 249, 243, 0.82);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+
+    box-shadow: 0 8px 30px rgba(20, 42, 64, 0.08);
+}
+
+/* Logo */
+.cabecalho-site .marca-site img {
+    display: block;
+    width: 90px;
+    height: auto;
+    max-width: 100%;
+}
+
+/* Links */
+.cabecalho-site .menu-principal {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+.cabecalho-site .menu-principal a {
+    color: #142A40;
+    font-family: 'DM Sans', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.cabecalho-site .menu-principal a:hover {
+    color: #C68A20;
+}
+
+/* Responsividade */
+@media (max-width: 800px) {
+    .cabecalho-site {
+        width: calc(100% - 24px);
+        padding: 14px;
+        flex-direction: column;
+    }
+
+    .cabecalho-site .menu-principal {
+        justify-content: center;
+        gap: 14px;
+    }
+}
+
+/* ====================================
+   MEU PERFIL - VISUAL ELEGANTE
+   ==================================== */
+
+/* Cabeçalho da página */
+body:has(#nome-perfil) .cabecalho-site {
+    position: relative;
+    top: auto;
+    width: calc(100% - 48px);
+    max-width: 1440px;
+    margin: 12px auto 0;
+    padding: 8px 28px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    background: rgba(255, 249, 243, 0.85);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(20, 42, 64, 0.08);
+}
+
+body:has(#nome-perfil) .marca-site img {
+    display: block;
+    width: 90px;
+    height: auto;
+}
+
+body:has(#nome-perfil) .menu-principal {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+body:has(#nome-perfil) .menu-principal a {
+    color: #142A40;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+body:has(#nome-perfil) .menu-principal a:hover {
+    color: #C68A20;
+}
+
+body:has(#nome-perfil) #btn-sair {
+    background: #142A40;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 22px;
+    cursor: pointer;
+}
+
+/* Área da foto e informações */
+body:has(#nome-perfil) .area-foto-perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 0 auto;
+}
+
+/* Foto de perfil */
+body:has(#nome-perfil) #foto-perfil {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #C68A20;
+    box-shadow: 0 8px 24px rgba(20, 42, 64, 0.12);
+}
+
+/* Botão alterar foto */
+body:has(#nome-perfil) .botao-foto {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 22px;
+    background: #142A40;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+body:has(#nome-perfil) .botao-foto:hover {
+    background: #234766;
+    transform: translateY(-2px);
+}
+
+/* Nome do usuário */
+body:has(#nome-perfil) #nome-perfil {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(30px, 4vw, 42px);
+    color: #142A40;
+    text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 800px) {
+    body:has(#nome-perfil) .cabecalho-site {
+        width: calc(100% - 24px);
+        padding: 14px;
+        flex-direction: column;
+    }
+
+    body:has(#nome-perfil) .menu-principal {
+        justify-content: center;
+        gap: 14px;
+    }
+}
+
+/* =====================================
+   PERFIL - ORGANIZAÇÃO DAS SEÇÕES
+   ===================================== */
+
+/* Área principal do perfil */
+body:has(#nome-perfil) main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 55px 24px 80px;
+    box-sizing: border-box;
+}
+
+/* Card das informações pessoais */
+body:has(#nome-perfil) .area-foto-perfil {
+    width: min(100%, 700px);
+    margin: 0 auto;
+    padding: 38px 24px 24px;
+    box-sizing: border-box;
+
+    background: #FFF9F3;
+    border: 1px solid #E8D5C3;
+    border-radius: 26px 26px 0 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Nome do perfil */
+body:has(#nome-perfil) #nome-perfil {
+    text-align: center;
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+
+/* Divisão entre perfil e receitas */
+.divisoria-perfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+    max-width: 900px;
+    margin: 65px auto 45px;
+    color: #C68A20;
+    font-size: 25px;
+}
+
+.divisoria-perfil::before,
+.divisoria-perfil::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        #D8B88E,
+        transparent
+    );
+}
+
+/* Receitas publicadas */
+body:has(#nome-perfil) #lista-receitas-perfil {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 26px;
+    max-width: 1100px;
+    margin: 30px auto 0;
+}
+
+/* Cards das receitas */
+#lista-receitas-perfil .card-receita {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background: #FFF9F3;
+    border: 1px solid #E8D5C3;
+    border-radius: 22px;
+    padding: 18px;
+}
+
+/* Imagens centralizadas */
+#lista-receitas-perfil .card-receita img {
+    display: block;
+    width: 100%;
+    height: 220px;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+    margin: 0 0 18px;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    body:has(#nome-perfil) #lista-receitas-perfil {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    body:has(#nome-perfil) #lista-receitas-perfil {
+        grid-template-columns: 1fr;
+    }
+
+    .divisoria-perfil {
+        margin: 40px auto 30px;
+    }
+}
+
+/* CORREÇÃO DO CARD DO PERFIL */
+
+body:has(#nome-perfil) .area-foto-perfil {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+
+    width: 100%;
+    padding: 0;
+    margin: 0 auto 18px;
+}
+
+/* Organiza o nome */
+body:has(#nome-perfil) #nome-perfil {
+    margin: 12px 0 8px;
+    text-align: center;
+}
+
+/* Reduz o espaço antes da divisória */
+body:has(#nome-perfil) .divisoria-perfil {
+    margin: 40px auto 30px;
+}
+
+/* ===================================
+   DETALHES DA RECEITA - AUTOR
+   =================================== */
+
+.autor-destaque {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 18px 20px;
+    margin: 25px 0;
+
+    background: #F8F1E9;
+    border: 1px solid #EAD9C6;
+    border-radius: 16px;
+}
+
+.autor-avatar {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #E8D7C0;
+    border-radius: 50%;
+    font-size: 23px;
+}
+
+.autor-informacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.autor-legenda {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    color: #967C61;
+}
+
+#autor-receita {
+    margin: 0;
+    color: #142A40;
+
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+/* ===================================
+   BOTÃO FAVORITAR
+   =================================== */
+
+#btn-favoritar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+    min-width: 220px;
+    margin: 40px auto 20px;
+    padding: 15px 28px;
+
+    background: #142A40;
+    color: #FFFFFF;
+
+    border: none;
+    border-radius: 30px;
+
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+#btn-favoritar:hover {
+    background: #C68A20;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(20, 42, 64, 0.15);
+}
+
+#btn-favoritar:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* =====================================
+   CABEÇALHO - DETALHES DA RECEITA
+   ===================================== */
+
+.cabecalho-receita {
+    position: relative;
+    top: auto;
+    left: auto;
+    z-index: 10;
+
+    width: calc(100% - 48px);
+    max-width: 1440px;
+    min-height: 90px;
+
+    margin: 12px auto 28px;
+    padding: 10px 28px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    background: rgba(255, 249, 243, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 22px;
+
+    box-shadow: 0 8px 28px rgba(20, 42, 64, 0.08);
+}
+
+/* Logo */
+.cabecalho-receita .marca-receita img {
+    display: block;
+    width: 85px;
+    height: auto;
+    max-width: 100%;
+}
+
+/* Menu */
+.cabecalho-receita .menu-receita {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 22px;
+}
+
+/* Links */
+.cabecalho-receita .menu-receita a {
+    color: #142A40;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.cabecalho-receita .menu-receita a:hover {
+    color: #C68A20;
+}
+
+/* Botão sair */
+.cabecalho-receita #btn-sair {
+    background: #142A40;
+    color: #FFFFFF;
+
+    border: none;
+    border-radius: 30px;
+    padding: 11px 24px;
+
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+.cabecalho-receita #btn-sair:hover {
+    background: #C68A20;
+}
+
+/* Celulares */
+@media (max-width: 800px) {
+    .cabecalho-receita {
+        width: calc(100% - 24px);
+        padding: 14px;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .cabecalho-receita .menu-receita {
+        justify-content: center;
+        gap: 14px;
+    }
 }
