@@ -1,260 +1,139 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Meu Perfil - UDF na Cozinha</title>
+    <title>Detalhes da receita | UDF na Cozinha</title>
 
     <link rel="stylesheet" href="../estilos.css">
+
+    <style>
+        .detalhes-receita {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+        }
+
+        .detalhes-receita h2 {
+            color: #142A40;
+        }
+
+        .detalhes-receita h3 {
+            color: #D99A18;
+        }
+
+        .foto-receita {
+            display: block;
+            max-width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 20px auto;
+        }
+
+        .informacoes {
+            background: #F8F6F0;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .detalhes-receita li {
+            margin-bottom: 12px;
+        }
+        #btn-favoritar {
+    background: white;
+    color: #D99A18;
+    border: 2px solid #D99A18;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    display: block;
+visibility: visible;
+}
+
+#btn-favoritar:hover {
+    background: #D99A18;
+    color: white;
+}
+
+    </style>
 </head>
 
 <body>
 
-    <header>
-
+<header class="cabecalho-receita">
+    <a href="index.html" class="marca-receita">
         <img
             src="../imagem/Logo UDF-Na-Cozinha.png"
             alt="Logo UDF na Cozinha"
         >
+    </a>
 
-        <nav>
-            <a href="index.html">Início</a>
-            <a href="cadastro-receita.html">Publicar receita</a>
-            <a href="minhas-receitas.html">Minhas Receitas</a>
-        </nav>
+    <nav class="menu-receita">
+        <a href="index.html">Início</a>
+        <a href="minhas-receitas.html">Minhas receitas</a>
+        <a href="cadastro-receita.html">Nova receita</a>
+        <a href="favoritos.html">Favoritos</a>
+        <a href="perfil.html">Perfil</a>
 
-    </header>
+        <button type="button" id="btn-sair">
+            Sair
+        </button>
+    </nav>
+</header>
 
 
-    <main class="perfil">
+    <main class="detalhes-receita">
+        <p id="mensagem">Carregando receita...</p>
 
-        <!-- CABEÇALHO DO PERFIL -->
+        <div id="conteudo-receita" hidden>
+         <h1 id="titulo-receita"></h1>
 
-        <section class="cabecalho-perfil">
+<button id="btn-favoritar">
+    ♡ Favoritar receita
+</button>
 
-            <div class="avatar">
+<img id="imagem-receita" class="foto-receita" alt="">
+            <p id="descricao-receita"></p>
 
-                <span>M</span>
+            <div class="informacoes">
+                
+<div class="autor-destaque">
+    <div class="autor-avatar">
+        <span>👤</span>
+    </div>
 
+    <div class="autor-informacoes">
+        <span class="autor-legenda">
+            RECEITA PUBLICADA POR
+        </span>
+
+        <p id="autor-receita"></p>
+    </div>
+</div>
+
+                <p id="categoria-receita"></p>
+                <p id="dificuldade-receita"></p>
+                <p id="tempo-receita"></p>
+                <p id="rendimento-receita"></p>
             </div>
 
-            <div class="informacoes-perfil">
-
-                <h1>Mariazinha</h1>
-
-                <p class="nome-usuario">@mariazinha</p>
-
-                <p class="biografia">
-                    Apaixonada por receitas caseiras, doces e
-                    momentos especiais na cozinha.
-                </p>
-
-                <button class="botao-editar">
-                    Editar perfil
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- ESTATÍSTICAS -->
-
-        <section class="estatisticas">
-
-            <div class="estatistica">
-
-                <strong>12</strong>
-
-                <span>Receitas</span>
-
-            </div>
-
-
-            <div class="estatistica">
-
-                <strong>28</strong>
-
-                <span>Avaliações</span>
-
-            </div>
-
-
-            <div class="estatistica">
-
-                <strong>15</strong>
-
-                <span>Favoritos</span>
-
-            </div>
-
-        </section>
-
-
-        <!-- MINHAS RECEITAS -->
-
-        <section class="secao-perfil">
-
-            <h2>Minhas receitas</h2>
-
-            <div class="lista-receitas">
-
-
-                <article class="card-receita">
-
-                    <img
-                        src="../imagem/bolo-chocolate.jpg"
-                        alt="Bolo de chocolate"
-                    >
-
-                    <h3>Bolo de chocolate</h3>
-
-                    <p>
-                        Um bolo simples, macio e perfeito
-                        para o café da tarde.
-                    </p>
-
-                    <a href="#">
-                        Ver receita
-                    </a>
-
-                </article>
-
-
-                <article class="card-receita">
-
-                    <img
-                        src="../imagem/bolo-cenoura.jpg"
-                        alt="Bolo de cenoura"
-                    >
-
-                    <h3>Bolo de cenoura</h3>
-
-                    <p>
-                        Receita clássica de bolo de cenoura
-                        com cobertura de chocolate.
-                    </p>
-
-                    <a href="#">
-                        Ver receita
-                    </a>
-
-                </article>
-
-
-                <article class="card-receita">
-
-                    <img
-                        src="../imagem/lasanha.jpg"
-                        alt="Lasanha"
-                    >
-
-                    <h3>Lasanha caseira</h3>
-
-                    <p>
-                        Uma receita saborosa para reunir
-                        toda a família.
-                    </p>
-
-                    <a href="#">
-                        Ver receita
-                    </a>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-        <!-- RECEITAS FAVORITAS -->
-
-        <section class="secao-perfil">
-
-            <h2>Receitas favoritas</h2>
-
-            <div class="lista-receitas">
-
-
-                <article class="card-receita">
-
-                    <img
-                        src="../imagem/panqueca.jpg"
-                        alt="Panquecas"
-                    >
-
-                    <h3>Panquecas</h3>
-
-                    <p>
-                        Uma opção prática e deliciosa
-                        para começar o dia.
-                    </p>
-
-                    <a href="#">
-                        Ver receita
-                    </a>
-
-                </article>
-
-
-                <article class="card-receita">
-
-                    <img
-                        src="../imagem/torta.jpg"
-                        alt="Torta"
-                    >
-
-                    <h3>Torta de frango</h3>
-
-                    <p>
-                        Torta salgada cremosa e fácil
-                        de preparar.
-                    </p>
-
-                    <a href="#">
-                        Ver receita
-                    </a>
-
-                </article>
-
-
-                <article class="card-receita">
-
-                    <img
-                        src="../imagem/pudim.jpg"
-                        alt="Pudim"
-                    >
-
-                    <h3>Pudim</h3>
-
-                    <p>
-                        Uma sobremesa clássica para
-                        qualquer ocasião.
-                    </p>
-
-                    <a href="#">
-                        Ver receita
-                    </a>
-
-                </article>
-
-            </div>
-
-        </section>
-
+            <h2>Ingredientes</h2>
+            <ul id="ingredientes-receita"></ul>
+
+            <h2>Modo de preparo</h2>
+            <ol id="passos-receita"></ol>
+        </div>
     </main>
 
-
-    <footer>
-
-        <p>
-            © 2026 UDF na Cozinha - Sabor & Gastronomia
-        </p>
-
-    </footer>
-
+    <script src="../js/detalhes-receita.js"></script>
+    <script src="../js/menu.js"></script>
 </body>
-
 </html>

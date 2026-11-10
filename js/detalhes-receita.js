@@ -6,7 +6,10 @@ const mensagem = document.getElementById("mensagem");
 const conteudo = document.getElementById("conteudo-receita");
 
 function preencherTexto(id, texto) {
-    document.getElementById(id).textContent = texto;
+    const elemento = document.getElementById(id);
+    if (elemento) {
+        elemento.textContent = texto;
+    }
 }
 
 async function carregarDetalhes() {
@@ -28,9 +31,21 @@ async function carregarDetalhes() {
 
         preencherTexto("titulo-receita", receita.titulo);
         preencherTexto("descricao-receita", receita.descricao || "");
-        preencherTexto("autor-receita", "Autor: " + (receita.autor || "Não informado"));
-        preencherTexto("categoria-receita", "Categoria: " + (receita.categoria || "Não informada"));
-        preencherTexto("dificuldade-receita", "Dificuldade: " + (receita.dificuldade || "Não informada"));
+
+    preencherTexto(
+    "autor-receita",
+    receita.autor || "Não informado"
+);
+
+        preencherTexto(
+            "categoria-receita",
+            "Categoria: " + (receita.categoria || "Não informada")
+        );
+
+        preencherTexto(
+            "dificuldade-receita",
+            "Dificuldade: " + (receita.dificuldade || "Não informada")
+        );
 
         const preparo = Number(receita.tp_prep) || 0;
         const cozimento = Number(receita.tp_cozi) || 0;
@@ -51,39 +66,54 @@ async function carregarDetalhes() {
 
         const imagem = document.getElementById("imagem-receita");
 
-        if (receita.imagem_capa) {
-            imagem.src = receita.imagem_capa.startsWith("/")
-                ? "http://localhost:3000" + receita.imagem_capa
-                : receita.imagem_capa;
+        if (imagem) {
+            if (receita.imagem_capa) {
+                imagem.src = receita.imagem_capa.startsWith("/")
+                    ? "http://localhost:3000" + receita.imagem_capa
+                    : receita.imagem_capa;
 
-            imagem.alt = receita.titulo;
-        } else {
-            imagem.hidden = true;
+                imagem.alt = receita.titulo;
+                imagem.hidden = false;
+            } else {
+                imagem.hidden = true;
+            }
         }
 
-        const listaIngredientes = document.getElementById("ingredientes-receita");
-        listaIngredientes.innerHTML = "";
+        const listaIngredientes =
+            document.getElementById("ingredientes-receita");
 
-        (receita.ingredientes || []).forEach(ingrediente => {
-            const item = document.createElement("li");
+        if (listaIngredientes) {
+            listaIngredientes.innerHTML = "";
 
-            item.textContent = [
-                ingrediente.quantidade,
-                ingrediente.un_medida,
-                ingrediente.nome
-            ].filter(valor => valor !== null && valor !== undefined && valor !== "").join(" ");
+            (receita.ingredientes || []).forEach(ingrediente => {
+                const item = document.createElement("li");
 
-            listaIngredientes.appendChild(item);
-        });
+                item.textContent = [
+                    ingrediente.quantidade,
+                    ingrediente.un_medida,
+                    ingrediente.nome
+                ].filter(valor =>
+                    valor !== null &&
+                    valor !== undefined &&
+                    valor !== ""
+                ).join(" ");
 
-        const listaPassos = document.getElementById("passos-receita");
-        listaPassos.innerHTML = "";
+                listaIngredientes.appendChild(item);
+            });
+        }
 
-        (receita.passos || []).forEach(passo => {
-            const item = document.createElement("li");
-            item.textContent = passo.desc_passo;
-            listaPassos.appendChild(item);
-        });
+        const listaPassos =
+            document.getElementById("passos-receita");
+
+        if (listaPassos) {
+            listaPassos.innerHTML = "";
+
+            (receita.passos || []).forEach(passo => {
+                const item = document.createElement("li");
+                item.textContent = passo.desc_passo;
+                listaPassos.appendChild(item);
+            });
+        }
 
         mensagem.hidden = true;
         conteudo.hidden = false;
@@ -95,82 +125,85 @@ async function carregarDetalhes() {
 }
 
 carregarDetalhes();
+
+// FAVORITAR RECEITA
+
 const botaoFavoritar = document.getElementById("btn-favoritar");
 
 let estaFavoritada = false;
 
-botaoFavoritar.addEventListener("click", async function () {
+if (botaoFavoritar) {
+    botaoFavoritar.addEventListener("click", async function () {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            alert("Você precisa fazer login.");
+            return;
+        }
+
+        if (!idReceita) return;
+
+        const estavaFavoritada = estaFavoritada;
+        botaoFavoritar.disabled = true;
+
+        try {
+            const resposta = await fetch(
+                `http://localhost:3000/api/receitas/${encodeURIComponent(idReceita)}/favorito`,
+                {
+                    method: estavaFavoritada ? "DELETE" : "POST",
+                    headers: {
+                        Authorization: "Bearer " + token
+                    }
+                }
+            );
+
+            if (!resposta.ok) {
+                throw new Error("Erro ao atualizar favorito.");
+            }
+
+            estaFavoritada = !estavaFavoritada;
+
+            botaoFavoritar.textContent = estaFavoritada
+                ? "♥ Receita favoritada"
+                : "♡ Favoritar receita";
+
+        } catch (erro) {
+            console.error("Erro ao atualizar favorito:", erro);
+            alert("Não foi possível atualizar o favorito.");
+        } finally {
+            botaoFavoritar.disabled = false;
+        }
+    });
+}
+
+async function verificarFavorito() {
     const token = localStorage.getItem("token");
 
-    if (!token) {
-        alert("Você precisa fazer login.");
-        return;
-    }
-
-    if (!idReceita) return;
-
-    const estavaFavoritada = estaFavoritada;
-
-    botaoFavoritar.disabled = true;
+    if (!token || !idReceita || !botaoFavoritar) return;
 
     try {
         const resposta = await fetch(
-            `http://localhost:3000/api/receitas/${idReceita}/favorito`,
+            "http://localhost:3000/api/favoritos",
             {
-                method: estavaFavoritada ? "DELETE" : "POST",
                 headers: {
-                    "Authorization": "Bearer " + token
+                    Authorization: "Bearer " + token
                 }
             }
         );
 
         if (!resposta.ok) {
-            throw new Error("Erro ao atualizar favorito");
-        }
-
-        estaFavoritada = !estavaFavoritada;
-
-        botaoFavoritar.textContent = estaFavoritada
-            ? "♥ Receita favoritada"
-            : "♡ Favoritar receita";
-
-    } catch (erro) {
-        console.error("Erro ao atualizar favorito:", erro);
-        alert("Não foi possível atualizar o favorito.");
-    } finally {
-        botaoFavoritar.disabled = false;
-    }
-});
-
-async function verificarFavorito() {
-    const token = localStorage.getItem("token");
-
-    if (!token || !idReceita) {
-        return;
-    }
-
-    try {
-        const resposta = await fetch("http://localhost:3000/api/favoritos", {
-            headers: {
-                "Authorization": "Bearer " + token
-            }
-        });
-
-        if (!resposta.ok) {
-            throw new Error("Erro ao verificar favoritos");
+            throw new Error("Erro ao verificar favoritos.");
         }
 
         const favoritos = await resposta.json();
 
-        const jaFavoritada = favoritos.some(function (receita) {
-            return String(receita.id_receita) === String(idReceita);
-        });
+        estaFavoritada = favoritos.some(receita =>
+            String(receita.id_receita) === String(idReceita)
+        );
 
-        if (jaFavoritada) {
-            botaoFavoritar.textContent = "♥ Receita favoritada";
-        } else {
-            botaoFavoritar.textContent = "♡ Favoritar receita";
-        }
+        botaoFavoritar.textContent = estaFavoritada
+            ? "♥ Receita favoritada"
+            : "♡ Favoritar receita";
 
     } catch (erro) {
         console.error("Erro ao verificar favorito:", erro);
