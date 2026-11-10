@@ -227,6 +227,9 @@ VALUES ('Salgados', 'Lanches salgados para fim da tarde');
 INSERT INTO categorias (nome, descricao)
 VALUES ('Bolos', 'Assados para lanche');
 
+// Arrumando erros de integração
+INSERT INTO categorias (nome, descricao) VALUES ('Bolos', 'Receitas de bolos');
+
 SELECT * FROM usuarios;
 
 
