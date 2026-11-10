@@ -1,3 +1,4 @@
+
 const { pool } = require('../config/db');
 const { HttpError } = require('../utils/erros');
 
@@ -18,7 +19,9 @@ async function buscarCompleta(ref) {
       WHERE ${porId ? 'r.id_receita' : 'r.slug'} = ?`,
     [ref]
   );
+
   if (!rows.length) return null;
+
   const r = rows[0];
   r.nota_media = r.nota_media === null ? null : Number(r.nota_media);
   r.total_avaliacoes = Number(r.total_avaliacoes);
@@ -31,12 +34,17 @@ async function buscarCompleta(ref) {
       ORDER BY ri.ordem, i.nome`,
     [r.id_receita]
   );
-  r.ingredientes = ingredientes.map((i) => ({ ...i, quantidade: Number(i.quantidade) }));
+
+  r.ingredientes = ingredientes.map((i) => ({
+    ...i,
+    quantidade: Number(i.quantidade)
+  }));
 
   const [passos] = await pool.query(
     'SELECT id_passo, ordem, desc_passo FROM modo_preparo WHERE id_receita = ? ORDER BY ordem',
     [r.id_receita]
   );
+
   r.passos = passos;
 
   const [tags] = await pool.query(
@@ -44,6 +52,7 @@ async function buscarCompleta(ref) {
       WHERE rt.id_receita = ? ORDER BY t.nome`,
     [r.id_receita]
   );
+
   r.tags = tags;
 
   const [imagens] = await pool.query(
@@ -51,25 +60,28 @@ async function buscarCompleta(ref) {
        FROM receita_imagens WHERE id_receita = ? ORDER BY principal DESC, id_imagem`,
     [r.id_receita]
   );
-  r.imagens = imagens.map((i) => ({ ...i, principal: !!i.principal }));
 
-  const [afiliados] = await pool.query(
-    `SELECT id_afiliado, id_ingredientes, titulo, loja, imagem_url
-       FROM afiliados WHERE ativo = 1 AND (id_receita = ? OR id_receita IS NULL) ORDER BY id_afiliado`,
-    [r.id_receita]
-  );
-  r.afiliados = afiliados.map((a) => ({ ...a, link: `/go/${a.id_afiliado}` }));
+  r.imagens = imagens.map((i) => ({
+    ...i,
+    principal: !!i.principal
+  }));
 
   return r;
 }
 
 // Garante que o usuário é dono da receita ou admin. Retorna a linha da receita.
 async function exigirDonoOuAdmin(idReceita, usuario) {
-  const [rows] = await pool.query('SELECT id_receita, id_usuario, imagem_capa FROM receitas WHERE id_receita = ?', [idReceita]);
+  const [rows] = await pool.query(
+    'SELECT id_receita, id_usuario, imagem_capa FROM receitas WHERE id_receita = ?',
+    [idReceita]
+  );
+
   if (!rows.length) throw new HttpError(404, 'Receita não encontrada.');
+
   if (usuario.perfil !== 'admin' && rows[0].id_usuario !== usuario.id_usuario) {
     throw new HttpError(403, 'Você só pode alterar as suas próprias receitas.');
   }
+
   return rows[0];
 }
 
