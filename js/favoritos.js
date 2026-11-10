@@ -22,11 +22,27 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.log("Dados dos favoritos:", favoritos);
         lista.innerHTML = "";
 
-        if (favoritos.length === 0) {
-            lista.textContent = "Você ainda não tem receitas favoritas. ❤️";
-            return;
-        }
+if (favoritos.length === 0) {
+  
+lista.innerHTML = `
+    <div class="favoritos-vazio">
+        <div class="favoritos-vazio-icone">♡</div>
 
+        <h2>Sua coleção de sabores começa aqui!</h2>
+
+        <p>
+            Você ainda não salvou nenhuma receita.
+            Explore nossas delícias e guarde suas favoritas
+            para preparar quando quiser.
+        </p>
+
+        <a href="index.html" class="favoritos-vazio-botao">
+            Explorar receitas
+        </a>
+    </div>
+`;
+
+}
         favoritos.forEach(function (receita) {
             const card = document.createElement("article");
             card.classList.add("card-favorito");
